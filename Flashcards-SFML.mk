@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Chris
-Date                   :=31/08/16
+Date                   :=01/09/16
 CodeLitePath           :="/home/chris/.codelite"
 LinkerName             :=/usr/bin/g++
 SharedObjectLinkerName :=/usr/bin/g++ -shared -fPIC
@@ -28,7 +28,7 @@ LibraryPathSwitch      :=-L
 PreprocessorSwitch     :=-D
 SourceSwitch           :=-c 
 OutputFile             :=$(IntermediateDirectory)/$(ProjectName)
-Preprocessors          :=
+Preprocessors          :=$(PreprocessorSwitch)SFML_STATIC 
 ObjectSwitch           :=-o 
 ArchiveOutputSwitch    := 
 PreprocessOnlySwitch   :=-E
@@ -36,12 +36,12 @@ ObjectsFileList        :="Flashcards-SFML.txt"
 PCHCompileFlags        :=
 MakeDirCommand         :=mkdir -p
 LinkOptions            :=  
-IncludePath            :=  $(IncludeSwitch). $(IncludeSwitch). 
+IncludePath            :=  $(IncludeSwitch). $(IncludeSwitch)/home/chris/dev/sfml/SFML/include 
 IncludePCH             := 
 RcIncludePath          := 
-Libs                   := 
-ArLibs                 :=  
-LibPath                := $(LibraryPathSwitch). 
+Libs                   := $(LibrarySwitch)sfml-graphics $(LibrarySwitch)sfml-window $(LibrarySwitch)sfml-audio $(LibrarySwitch)sfml-network $(LibrarySwitch)sfml-system 
+ArLibs                 :=  "sfml-graphics" "sfml-window" "sfml-audio" "sfml-network" "sfml-system" 
+LibPath                := $(LibraryPathSwitch). $(LibraryPathSwitch)/home/chris/dev/sfml/SFML/lib 
 
 ##
 ## Common variables
@@ -60,7 +60,7 @@ AS       := /usr/bin/as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/Window.cpp$(ObjectSuffix) $(IntermediateDirectory)/Flashcards.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateStart.cpp$(ObjectSuffix) 
 
 
 
@@ -98,6 +98,30 @@ $(IntermediateDirectory)/main.cpp$(DependSuffix): main.cpp
 
 $(IntermediateDirectory)/main.cpp$(PreprocessSuffix): main.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.cpp$(PreprocessSuffix) "main.cpp"
+
+$(IntermediateDirectory)/Window.cpp$(ObjectSuffix): Window.cpp $(IntermediateDirectory)/Window.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/chris/CodeLiteProjects/Flashcards-SFML/Window.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Window.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/Window.cpp$(DependSuffix): Window.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Window.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Window.cpp$(DependSuffix) -MM "Window.cpp"
+
+$(IntermediateDirectory)/Window.cpp$(PreprocessSuffix): Window.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Window.cpp$(PreprocessSuffix) "Window.cpp"
+
+$(IntermediateDirectory)/Flashcards.cpp$(ObjectSuffix): Flashcards.cpp $(IntermediateDirectory)/Flashcards.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/chris/CodeLiteProjects/Flashcards-SFML/Flashcards.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Flashcards.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/Flashcards.cpp$(DependSuffix): Flashcards.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Flashcards.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Flashcards.cpp$(DependSuffix) -MM "Flashcards.cpp"
+
+$(IntermediateDirectory)/Flashcards.cpp$(PreprocessSuffix): Flashcards.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Flashcards.cpp$(PreprocessSuffix) "Flashcards.cpp"
+
+$(IntermediateDirectory)/StateStart.cpp$(ObjectSuffix): StateStart.cpp $(IntermediateDirectory)/StateStart.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/chris/CodeLiteProjects/Flashcards-SFML/StateStart.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/StateStart.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/StateStart.cpp$(DependSuffix): StateStart.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/StateStart.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/StateStart.cpp$(DependSuffix) -MM "StateStart.cpp"
+
+$(IntermediateDirectory)/StateStart.cpp$(PreprocessSuffix): StateStart.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/StateStart.cpp$(PreprocessSuffix) "StateStart.cpp"
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

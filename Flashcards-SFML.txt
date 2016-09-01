@@ -1,1 +1,1 @@
-./Debug/main.cpp.o
+./Debug/main.cpp.o ./Debug/Window.cpp.o ./Debug/Flashcards.cpp.o ./Debug/StateStart.cpp.o
