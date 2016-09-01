@@ -11,4 +11,5 @@ public:
 	virtual ~IState() {};
 	virtual void update() {};
 	virtual void render() {};
+	Flashcards & getFlashcards();
 };

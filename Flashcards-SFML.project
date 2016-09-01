@@ -11,6 +11,7 @@
     <File Name="IState.h"/>
     <File Name="StateStart.h"/>
     <File Name="StateStart.cpp"/>
+    <File Name="IState.cpp"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>
