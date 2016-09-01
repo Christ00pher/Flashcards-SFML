@@ -1,6 +1,17 @@
 #include "StateStart.h"
-
-StateStart::StateStart()
+#include <iostream>
+StateStart::StateStart(Flashcards &flashcards)
 {
-	flashcards = getFlashcards();
+	this->p_flashcards = &flashcards;
+}
+
+void StateStart::showVar()
+{
+	std::cout << "StateStart: ";
+	p_flashcards->showVar();
+}
+
+void StateStart::setVar(int x)
+{
+	p_flashcards->setVar(x);
 }

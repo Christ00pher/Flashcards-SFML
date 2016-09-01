@@ -2,7 +2,11 @@
 
 class Flashcards
 {
+private:
+	int example;
 public:
-	Flashcards() {};
+	void setVar(int);
+	Flashcards();
+	void showVar();
 	~Flashcards() {};
 };

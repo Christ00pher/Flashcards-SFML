@@ -5,8 +5,10 @@
 class StateStart : public IState
 {
 private:
-	Flashcards flashcards;
+	Flashcards *p_flashcards;
 public:
-	StateStart();
+	StateStart(Flashcards &flashcards);
+	void showVar();
 	~StateStart() {};
+	void setVar(int);
 };

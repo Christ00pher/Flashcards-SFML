@@ -5,11 +5,13 @@
 class IState
 {
 private:
-	Flashcards flashcards;
+	Flashcards* p_flashcards;
 public:
 	IState() {};
+	IState(Flashcards &flashcards);
 	virtual ~IState() {};
 	virtual void update() {};
 	virtual void render() {};
-	Flashcards & getFlashcards();
+	virtual void showVar();
+	virtual void setVar(int);
 };

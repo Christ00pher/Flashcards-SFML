@@ -1,3 +1,18 @@
 #include "IState.h"
+#include <iostream>
 
-Flashcards & IState::getFlashcards() { return this->flashcards; }
+void IState::showVar()
+{ 
+	std::cout << "IState: ";
+	p_flashcards->showVar(); 
+}
+
+void IState::setVar(int x)
+{
+	p_flashcards->setVar(x);
+}
+
+IState::IState(Flashcards &flashcards)
+{
+	this->p_flashcards = &flashcards;
+}
