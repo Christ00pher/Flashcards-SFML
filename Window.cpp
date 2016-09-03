@@ -13,6 +13,6 @@ sf::RenderWindow* Window::getWindow() { return &window; }
 
 void Window::closeWindow() { window.close(); }
 
-void Window::startRender() { window.clear(sf::Color::Red); }
+void Window::startRender() { window.clear(sf::Color::Blue); }
 
 void Window::finishRender() { window.display(); }

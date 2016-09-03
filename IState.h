@@ -6,7 +6,7 @@
 class IState
 {
 protected:
-	Flashcards* flashcards;
+	Flashcards*  flashcards;
 	Window window;
 public:
 	IState() {};
@@ -15,4 +15,5 @@ public:
 	virtual void update() = 0;
 	virtual void render() = 0;
 	virtual void pollEvent();
+	virtual void checkButtons() = 0;
 };
