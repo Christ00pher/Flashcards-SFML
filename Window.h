@@ -5,8 +5,12 @@ class Window
 {
 private:
 	sf::RenderWindow window;
-	sf::Vector2f size;
 public:
-	Window() {};
-	~Window() {};
+	Window();
+	~Window();
+	sf::RenderWindow* getWindow();
+	void closeWindow();
+	void startRender();
+	void finishRender();
+	void draw(sf::Drawable&);
 };

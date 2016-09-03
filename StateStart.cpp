@@ -1,17 +1,36 @@
 #include "StateStart.h"
 #include <iostream>
-StateStart::StateStart(Flashcards &flashcards)
+StateStart::StateStart(Flashcards &flashcards) :
+TOTAL_BUTTONS(4)
 {
-	this->p_flashcards = &flashcards;
+	//setting pointer to the flashcards object
+	this->flashcards = &flashcards;
+	
+	//loading .png images from the files
+	t_button[Start].loadFromFile("data/StateStart/startButton.png");
+	t_button[Handle].loadFromFile("data/StateStart/handleButton.png");
+	t_button[Options].loadFromFile("data/StateStart/optionsButton.png");
+	t_button[Exit].loadFromFile("data/StateStart/exitButton.png");
+	
+	//assigning textures to sprites
+	for (int i = 0; i < 4; ++i)
+	{
+		button[i].setTexture(t_button[i]);
+		button[i].setPosition(200, (i+1) * 80);
+	}
 }
 
-void StateStart::showVar()
+void StateStart::update()
 {
-	std::cout << "StateStart: ";
-	p_flashcards->showVar();
+	pollEvent();
 }
 
-void StateStart::setVar(int x)
+void StateStart::render()
 {
-	p_flashcards->setVar(x);
+	window.startRender();
+	for (int i = 0; i < 4; i++)
+	{
+		window.draw(button[i]);
+	}
+	window.finishRender();
 }

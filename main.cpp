@@ -6,27 +6,22 @@
 int main()
 {
 	Flashcards flashcards;
-	IState *state1 = new IState(flashcards);
-	state1->setVar(1);
-	state1->showVar();
-	state1 = new StateStart(flashcards);
 	
-	state1->showVar();
-	state1->setVar(2);
-	state1 = new IState(flashcards);
-	state1->showVar();
-	state1->setVar(3);
-	state1->showVar();
-	state1 = new StateStart(flashcards);
-	state1->showVar();
-	/*
-	IState* state = new StateStart();
+	IState* state = new StateStart(flashcards);
 	while(true)
 	{
-		state->update();
-		state->render();
-		 ...
+	state->update();
+	state->render();
+	
+	
+	/*
+	switch (State)
+	{
+		case StateHandleFlashcards: state = new StateHandle...();
+		case StateOptions: state = new StateOptions();
+		
 	}
-	 * */
+	*/
+	}
 	return 0;
 }
