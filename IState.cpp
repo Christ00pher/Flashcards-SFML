@@ -4,6 +4,7 @@
 IState::IState(Flashcards &flashcards)
 {
 	this->flashcards = &flashcards;
+	end = false;
 }
 
 void IState::pollEvent()
@@ -14,4 +15,9 @@ void IState::pollEvent()
 		if (event.type == sf::Event::Closed)
 			window.closeWindow();
 	}
+}
+
+bool IState::toExit()
+{
+	return end;
 }

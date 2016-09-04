@@ -19,4 +19,7 @@ public:
 	virtual void update();
 	virtual void render();
 	virtual void checkButtons();
+	void checkClick();
+	bool mouseOnButton(sf::Sprite&);
+	void handleClick(sf::Sprite&);
 };

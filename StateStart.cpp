@@ -19,7 +19,7 @@ TOTAL_BUTTONS(4)
 		button[i].setPosition(200, (i+1) * 80);
 	}
 	
-	//sf::Vector2f size = button.getGlobalBounds();
+	end = false;
 }
 
 void StateStart::update()
@@ -40,24 +40,23 @@ void StateStart::render()
 
 void StateStart::checkButtons()
 {
-	sf::Vector2i mPos = sf::Mouse::getPosition( *(window.getWindow()) );
-	sf::Vector2f sPos;
 	//for (sf::Sprite x: button) //add &
 	for (int i = 0; i < 4; i++)
 	{
-		sPos = button[i].getPosition();
-		if (mPos.x >= sPos.x && mPos.x <= sPos.x + 400
-			&& mPos.y >= sPos.y && mPos.y <= sPos.y + 60)
+		if (mouseOnButton(button[i]))
 		{
 			highlightButton(button[i]);
+		}
+		
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && mouseOnButton(button[i]))
+		{
+			handleClick(button[i]);
 		}
 	}
 	
 	for (int i = 0; i < 4; i++)
 	{
-		sPos = button[i].getPosition();
-		if (!(mPos.x >= sPos.x && mPos.x <= sPos.x + 400
-			&& mPos.y >= sPos.y && mPos.y <= sPos.y + 60))
+		if (!mouseOnButton(button[i]))
 		{
 			undo(button[i]);
 		}
@@ -72,4 +71,40 @@ void StateStart::highlightButton(sf::Sprite &but)
 void StateStart::undo(sf::Sprite &but)
 {
 	but.setColor(sf::Color::White);
+}
+
+bool StateStart::mouseOnButton(sf::Sprite &but)
+{
+	sf::Vector2i mousePos = sf::Mouse::getPosition( *(window.getWindow()) );
+	sf::Vector2f buttonPos = but.getPosition();
+	
+	if (mousePos.x >= buttonPos.x && mousePos.x <= buttonPos.x + 400
+		&& mousePos.y >= buttonPos.y && mousePos.y <= buttonPos.y + 60)
+			return true;
+	
+	return false;
+}
+
+void StateStart::handleClick(sf::Sprite& but)
+{
+	if (&but == &button[Start])
+	{
+		//handle asking
+	}
+	
+	else if (&but == &button[Handle])
+	{
+		//handle editing flashcards
+	}
+	
+	else if (&but == &button[Options])
+	{
+		
+	}
+	
+	else if (&but == &button[Exit])
+	{
+		end = true;
+		window.closeWindow();
+	}
 }

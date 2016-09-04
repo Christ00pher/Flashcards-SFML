@@ -8,7 +8,7 @@ int main()
 	Flashcards flashcards;
 	
 	IState* state = new StateStart(flashcards);
-	while(true)
+	while(!state->toExit())
 	{
 	state->update();
 	state->render();

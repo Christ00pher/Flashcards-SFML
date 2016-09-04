@@ -6,8 +6,9 @@
 class IState
 {
 protected:
-	Flashcards*  flashcards;
+	Flashcards* flashcards;
 	Window window;
+	bool end;
 public:
 	IState() {};
 	IState(Flashcards &flashcards);
@@ -16,4 +17,5 @@ public:
 	virtual void render() = 0;
 	virtual void pollEvent();
 	virtual void checkButtons() = 0;
+	bool toExit();
 };
