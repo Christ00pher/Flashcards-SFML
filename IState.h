@@ -9,6 +9,10 @@ protected:
 	Flashcards* flashcards;
 	Window window;
 	bool end;
+	bool stateMenu;
+	bool stateStart;
+	bool stateHandle;
+	bool stateOptions;
 public:
 	IState() {};
 	IState(Flashcards &flashcards);
@@ -17,5 +21,9 @@ public:
 	virtual void render() = 0;
 	virtual void pollEvent();
 	virtual void checkButtons() = 0;
+	virtual bool getMenu();
+	virtual bool getStart();
+	virtual bool getHandle();
+	virtual bool getOptions();
 	bool toExit();
 };

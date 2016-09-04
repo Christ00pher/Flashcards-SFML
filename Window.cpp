@@ -3,6 +3,7 @@
 Window::Window()
 {
 	window.create(sf::VideoMode(800,600), "Fiszki");
+	window.setFramerateLimit(60);
 }
 
 Window::~Window() {}

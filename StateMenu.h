@@ -4,18 +4,20 @@
 
 enum Buttons { Start, Handle, Options, Exit};
 
-class StateStart : public IState
+class StateMenu : public IState
 {
 private:
 	const short TOTAL_BUTTONS;
 	sf::Texture t_button[4];
 	sf::Sprite button[4];
+	sf::Texture t_background;
+	sf::Sprite background;
 	sf::Vector2f buttonSize;
-	void highlightButton(sf::Sprite&);
+	void highlightButton(sf::Sprite&, int);
 	void undo(sf::Sprite&);
 public:
-	StateStart(Flashcards &flashcards);
-	~StateStart() {};
+	StateMenu(Flashcards &flashcards);
+	~StateMenu() {};
 	virtual void update();
 	virtual void render();
 	virtual void checkButtons();

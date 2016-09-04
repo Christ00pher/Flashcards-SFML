@@ -9,9 +9,9 @@
     <File Name="Flashcards.h"/>
     <File Name="Flashcards.cpp"/>
     <File Name="IState.h"/>
-    <File Name="StateStart.h"/>
-    <File Name="StateStart.cpp"/>
     <File Name="IState.cpp"/>
+    <File Name="StateMenu.h"/>
+    <File Name="StateMenu.cpp"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>

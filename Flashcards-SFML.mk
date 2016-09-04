@@ -60,7 +60,7 @@ AS       := /usr/bin/as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/Window.cpp$(ObjectSuffix) $(IntermediateDirectory)/Flashcards.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateStart.cpp$(ObjectSuffix) $(IntermediateDirectory)/IState.cpp$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/Window.cpp$(ObjectSuffix) $(IntermediateDirectory)/Flashcards.cpp$(ObjectSuffix) $(IntermediateDirectory)/IState.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateMenu.cpp$(ObjectSuffix) 
 
 
 
@@ -115,14 +115,6 @@ $(IntermediateDirectory)/Flashcards.cpp$(DependSuffix): Flashcards.cpp
 $(IntermediateDirectory)/Flashcards.cpp$(PreprocessSuffix): Flashcards.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Flashcards.cpp$(PreprocessSuffix) "Flashcards.cpp"
 
-$(IntermediateDirectory)/StateStart.cpp$(ObjectSuffix): StateStart.cpp $(IntermediateDirectory)/StateStart.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/chris/CodeLiteProjects/Flashcards-SFML/StateStart.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/StateStart.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/StateStart.cpp$(DependSuffix): StateStart.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/StateStart.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/StateStart.cpp$(DependSuffix) -MM "StateStart.cpp"
-
-$(IntermediateDirectory)/StateStart.cpp$(PreprocessSuffix): StateStart.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/StateStart.cpp$(PreprocessSuffix) "StateStart.cpp"
-
 $(IntermediateDirectory)/IState.cpp$(ObjectSuffix): IState.cpp $(IntermediateDirectory)/IState.cpp$(DependSuffix)
 	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/chris/CodeLiteProjects/Flashcards-SFML/IState.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/IState.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/IState.cpp$(DependSuffix): IState.cpp
@@ -130,6 +122,14 @@ $(IntermediateDirectory)/IState.cpp$(DependSuffix): IState.cpp
 
 $(IntermediateDirectory)/IState.cpp$(PreprocessSuffix): IState.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/IState.cpp$(PreprocessSuffix) "IState.cpp"
+
+$(IntermediateDirectory)/StateMenu.cpp$(ObjectSuffix): StateMenu.cpp $(IntermediateDirectory)/StateMenu.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/chris/CodeLiteProjects/Flashcards-SFML/StateMenu.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/StateMenu.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/StateMenu.cpp$(DependSuffix): StateMenu.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/StateMenu.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/StateMenu.cpp$(DependSuffix) -MM "StateMenu.cpp"
+
+$(IntermediateDirectory)/StateMenu.cpp$(PreprocessSuffix): StateMenu.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/StateMenu.cpp$(PreprocessSuffix) "StateMenu.cpp"
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

@@ -17,6 +17,11 @@ void IState::pollEvent()
 	}
 }
 
+bool IState::getMenu() { return stateMenu; }
+bool IState::getStart() { return stateStart; }
+bool IState::getHandle() { return stateHandle; }
+bool IState::getOptions() { return stateOptions; }
+
 bool IState::toExit()
 {
 	return end;
