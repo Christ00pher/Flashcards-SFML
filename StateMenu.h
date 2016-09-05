@@ -19,6 +19,8 @@ private:
 	Button button[4];
 	void highlightButton(int);
 	void undo(int);
+	sf::Vector2i leftClickPos;
+	bool leftClick;
 public:
 	StateMenu(Flashcards &flashcards);
 	~StateMenu() {};
@@ -30,4 +32,5 @@ public:
 	void checkClick();
 	bool mouseOnButton(sf::Sprite&);
 	void handleClick(sf::Sprite&);
+	bool clickOnButton(sf::Sprite&);
 };

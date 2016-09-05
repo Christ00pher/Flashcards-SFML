@@ -28,6 +28,7 @@ TOTAL_BUTTONS(4)
 		button[i].button.setPosition(200, (i+1) * 80);
 	}
 	
+	leftClick = false;
 	end = false;
 }
 
@@ -56,10 +57,21 @@ bool StateMenu::isMouseReleased(sf::Event event)
 	return false;
 }
 
+bool StateMenu::clickOnButton(sf::Sprite& but)
+{
+	sf::Vector2f buttonPos = but.getPosition();
+	if (leftClickPos.x >= buttonPos.x && leftClickPos.x <= buttonPos.x + 400
+		&& leftClickPos.y >= buttonPos.y && leftClickPos.y <= buttonPos.y + 60)
+			return true;
+			
+	return false;
+}
+
 //function is checking if the button has to be highlighted, handled or extinguished
 void StateMenu::checkButtons(sf::Event event)
 {
 	//for (sf::Sprite x: button) //add &
+		
 	for (int i = 0; i < TOTAL_BUTTONS; i++)
 	{
 		if (mouseOnButton(button[i].button))
@@ -67,7 +79,7 @@ void StateMenu::checkButtons(sf::Event event)
 			highlightButton(i);
 		}
 		
-		if (isMouseReleased(event) && mouseOnButton(button[i].button))
+		if (clickOnButton(button[i].button) && isMouseReleased(event) && mouseOnButton(button[i].button))
 		{
 			handleClick(button[i].button);
 		}
@@ -133,6 +145,14 @@ void StateMenu::pollEvent()
 	sf::Event event;
 	while (window.getWindow()->pollEvent(event))
 	{
+		if (event.type == sf::Event::MouseButtonReleased)
+			leftClick = !leftClick;
+			
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !leftClick)
+		{
+			leftClickPos = sf::Mouse::getPosition( *(window.getWindow()) );
+			leftClick = !leftClick;
+		}
 		checkButtons(event);
 		if (event.type == sf::Event::Closed)
 			window.closeWindow();
