@@ -20,10 +20,9 @@ public:
 	virtual void update() = 0;
 	virtual void render() = 0;
 	virtual void pollEvent();
-	virtual void checkButtons() = 0;
 	virtual bool getMenu();
 	virtual bool getStart();
 	virtual bool getHandle();
 	virtual bool getOptions();
-	bool toExit();
+	virtual bool toExit();
 };

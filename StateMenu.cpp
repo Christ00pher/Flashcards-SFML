@@ -6,18 +6,28 @@ TOTAL_BUTTONS(4)
 	//setting pointer to the flashcards object
 	this->flashcards = &flashcards;
 	
+	button[Start].defaultPath = "data/StateStart/startDefault.png";
+	button[Start].markedPath = "data/StateStart/startMarked.png";
+	button[Handle].defaultPath = "data/StateStart/handleDefault.png";
+	button[Handle].markedPath = "data/StateStart/handleMarked.png";
+	button[Options].defaultPath = "data/StateStart/optionsDefault.png";
+	button[Options].markedPath = "data/StateStart/optionsMarked.png";
+	button[Exit].defaultPath = "data/StateStart/exitDefault.png";
+	button[Exit].markedPath = "data/StateStart/exitMarked.png";
 	//loading .png images from the files
+	/*
 	t_button[Start].loadFromFile("data/StateStart/startDefault.png");
 	t_button[Handle].loadFromFile("data/StateStart/handleDefault.png");
 	t_button[Options].loadFromFile("data/StateStart/optionsDefault.png");
 	t_button[Exit].loadFromFile("data/StateStart/exitDefault.png");
+	 */
 	t_background.loadFromFile("data/background.jpg");
-	
 	//assigning textures to sprites
 	for (int i = 0; i < TOTAL_BUTTONS; ++i)
 	{
-		button[i].setTexture(t_button[i]);
-		button[i].setPosition(200, (i+1) * 80);
+		button[i].t_button.loadFromFile(button[i].defaultPath);
+		button[i].button.setTexture(button[i].t_button);
+		button[i].button.setPosition(200, (i+1) * 80);
 	}
 	background.setTexture(t_background);
 	
@@ -36,7 +46,7 @@ void StateMenu::render()
 	window.draw(background);
 	for (int i = 0; i < TOTAL_BUTTONS; i++)
 	{
-		window.draw(button[i]);
+		window.draw(button[i].button);
 	}
 	window.finishRender();
 }
@@ -46,77 +56,20 @@ void StateMenu::checkButtons()
 	//for (sf::Sprite x: button) //add &
 	for (int i = 0; i < TOTAL_BUTTONS; i++)
 	{
-		if (mouseOnButton(button[i]))
+		if (mouseOnButton(button[i].button))
 		{
-			highlightButton(button[i], i);
+			highlightButton(i);
 		}
 		
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && mouseOnButton(button[i]))
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && mouseOnButton(button[i].button))
 		{
-			handleClick(button[i]);
+			handleClick(button[i].button);
 		}
 		
-		if (!mouseOnButton(button[i]))
+		if (!mouseOnButton(button[i].button))
 		{
-			undo(button[i]);
+			undo(i);
 		}
-	}
-}
-
-//TO DO: create Structure for each button with texture,sprite and string with path to files
-//and shorten the 'undo' and 'highlightButton' function 
-//ARRAY OF STRUCTURES!!!
-void StateMenu::highlightButton(sf::Sprite &but, int i)
-{
-	if (&but == &button[Start])
-	{
-		t_button[Start].loadFromFile("data/StateStart/startMarked.png");
-		button[Start].setTexture(t_button[Start]);
-	}
-	
-	else if (&but == &button[Handle])
-	{
-		t_button[Handle].loadFromFile("data/StateStart/handleMarked.png");
-		button[Handle].setTexture(t_button[Handle]);
-	}
-	
-	else if (&but == &button[Options])
-	{
-		t_button[Options].loadFromFile("data/StateStart/optionsMarked.png");
-		button[Options].setTexture(t_button[Options]);
-	}
-	
-	else if (&but == &button[Exit])
-	{
-		t_button[Exit].loadFromFile("data/StateStart/exitMarked.png");
-		button[Exit].setTexture(t_button[Exit]);
-	}
-}
-
-void StateMenu::undo(sf::Sprite &but)
-{
-	if (&but == &button[Start])
-	{
-		t_button[Start].loadFromFile("data/StateStart/startDefault.png");
-		button[Start].setTexture(t_button[Start]);
-	}
-	
-	else if (&but == &button[Handle])
-	{
-		t_button[Handle].loadFromFile("data/StateStart/handleDefault.png");
-		button[Handle].setTexture(t_button[Handle]);
-	}
-	
-	else if (&but == &button[Options])
-	{
-		t_button[Options].loadFromFile("data/StateStart/optionsDefault.png");
-		button[Options].setTexture(t_button[Options]);
-	}
-	
-	else if (&but == &button[Exit])
-	{
-		t_button[Exit].loadFromFile("data/StateStart/exitDefault.png");
-		button[Exit].setTexture(t_button[Exit]);
 	}
 }
 
@@ -134,33 +87,36 @@ bool StateMenu::mouseOnButton(sf::Sprite &but)
 
 void StateMenu::handleClick(sf::Sprite& but)
 {
-	if (&but == &button[Start])
+	if (&but == &button[Start].button)
 	{
 		//handle asking
 	}
 	
-	else if (&but == &button[Handle])
+	else if (&but == &button[Handle].button)
 	{
 		//handle editing flashcards
 	}
 	
-	else if (&but == &button[Options])
+	else if (&but == &button[Options].button)
 	{
 		//handle options
 	}
 	
-	else if (&but == &button[Exit])
+	else if (&but == &button[Exit].button)
 	{
 		end = true;
 		window.closeWindow();
 	}
 }
 
-
-/*
-void StateMenu::highlightButton(sf::Sprite &but, int i)
+void StateMenu::highlightButton(int i)
 {
-	button[i].t_button.loadFromFile(string_path);
-	button[i].button.setTexture(t_button);
+	button[i].t_button.loadFromFile(button[i].markedPath);
+	button[i].button.setTexture(button[i].t_button);
 }
-*/
+
+void StateMenu::undo(int i)
+{
+	button[i].t_button.loadFromFile(button[i].defaultPath);
+	button[i].button.setTexture(button[i].t_button);
+}

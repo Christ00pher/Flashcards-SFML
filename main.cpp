@@ -8,10 +8,11 @@ int main()
 	Flashcards flashcards;
 	
 	IState* state = new StateMenu(flashcards);
+	
 	while(!state->toExit())
 	{
-	state->update();
-	state->render();
+		state->update();
+		state->render();
 	}
 	return 0;
 }

@@ -8,13 +8,19 @@ class StateMenu : public IState
 {
 private:
 	const short TOTAL_BUTTONS;
-	sf::Texture t_button[4];
-	sf::Sprite button[4];
 	sf::Texture t_background;
 	sf::Sprite background;
 	sf::Vector2f buttonSize;
-	void highlightButton(sf::Sprite&, int);
-	void undo(sf::Sprite&);
+	struct Button
+	{
+		sf::Texture t_button;
+		sf::Sprite button;
+		std::string defaultPath;
+		std::string markedPath;
+	};
+	Button button[4];
+	void highlightButton(int);
+	void undo(int);
 public:
 	StateMenu(Flashcards &flashcards);
 	~StateMenu() {};
