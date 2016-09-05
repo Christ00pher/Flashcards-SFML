@@ -6,6 +6,7 @@ TOTAL_BUTTONS(4)
 	//setting pointer to the flashcards object
 	this->flashcards = &flashcards;
 	
+	//setting string paths to the resources
 	button[Start].defaultPath = "data/StateStart/startDefault.png";
 	button[Start].markedPath = "data/StateStart/startMarked.png";
 	button[Handle].defaultPath = "data/StateStart/handleDefault.png";
@@ -14,14 +15,11 @@ TOTAL_BUTTONS(4)
 	button[Options].markedPath = "data/StateStart/optionsMarked.png";
 	button[Exit].defaultPath = "data/StateStart/exitDefault.png";
 	button[Exit].markedPath = "data/StateStart/exitMarked.png";
-	//loading .png images from the files
-	/*
-	t_button[Start].loadFromFile("data/StateStart/startDefault.png");
-	t_button[Handle].loadFromFile("data/StateStart/handleDefault.png");
-	t_button[Options].loadFromFile("data/StateStart/optionsDefault.png");
-	t_button[Exit].loadFromFile("data/StateStart/exitDefault.png");
-	 */
+	
+	//setting background
 	t_background.loadFromFile("data/background.jpg");
+	background.setTexture(t_background);
+	
 	//assigning textures to sprites
 	for (int i = 0; i < TOTAL_BUTTONS; ++i)
 	{
@@ -29,7 +27,6 @@ TOTAL_BUTTONS(4)
 		button[i].button.setTexture(button[i].t_button);
 		button[i].button.setPosition(200, (i+1) * 80);
 	}
-	background.setTexture(t_background);
 	
 	end = false;
 }
@@ -37,7 +34,6 @@ TOTAL_BUTTONS(4)
 void StateMenu::update()
 {
 	pollEvent();
-	checkButtons();
 }
 
 void StateMenu::render()
@@ -51,7 +47,17 @@ void StateMenu::render()
 	window.finishRender();
 }
 
-void StateMenu::checkButtons()
+bool StateMenu::isMouseReleased(sf::Event event)
+{
+	if (event.mouseButton.button == sf::Mouse::Left &&
+		event.type == sf::Event::MouseButtonReleased)
+			return true;
+	
+	return false;
+}
+
+//function is checking if the button has to be highlighted, handled or extinguished
+void StateMenu::checkButtons(sf::Event event)
 {
 	//for (sf::Sprite x: button) //add &
 	for (int i = 0; i < TOTAL_BUTTONS; i++)
@@ -61,7 +67,7 @@ void StateMenu::checkButtons()
 			highlightButton(i);
 		}
 		
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && mouseOnButton(button[i].button))
+		if (isMouseReleased(event) && mouseOnButton(button[i].button))
 		{
 			handleClick(button[i].button);
 		}
@@ -85,21 +91,22 @@ bool StateMenu::mouseOnButton(sf::Sprite &but)
 	return false;
 }
 
+//functions is checking if changing state is needed or if the app has to be closed
 void StateMenu::handleClick(sf::Sprite& but)
 {
 	if (&but == &button[Start].button)
 	{
-		//handle asking
+		//set stateStart as TRUE
 	}
 	
 	else if (&but == &button[Handle].button)
 	{
-		//handle editing flashcards
+		//set stateHandle as TRUE
 	}
 	
 	else if (&but == &button[Options].button)
 	{
-		//handle options
+		//set stateOptions as TRUE
 	}
 	
 	else if (&but == &button[Exit].button)
@@ -119,4 +126,15 @@ void StateMenu::undo(int i)
 {
 	button[i].t_button.loadFromFile(button[i].defaultPath);
 	button[i].button.setTexture(button[i].t_button);
+}
+
+void StateMenu::pollEvent()
+{
+	sf::Event event;
+	while (window.getWindow()->pollEvent(event))
+	{
+		checkButtons(event);
+		if (event.type == sf::Event::Closed)
+			window.closeWindow();
+	}
 }

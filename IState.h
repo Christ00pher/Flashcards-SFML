@@ -13,6 +13,8 @@ protected:
 	bool stateStart;
 	bool stateHandle;
 	bool stateOptions;
+	sf::Texture t_background;
+	sf::Sprite background;
 public:
 	IState() {};
 	IState(Flashcards &flashcards);

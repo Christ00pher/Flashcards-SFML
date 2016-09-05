@@ -8,8 +8,6 @@ class StateMenu : public IState
 {
 private:
 	const short TOTAL_BUTTONS;
-	sf::Texture t_background;
-	sf::Sprite background;
 	sf::Vector2f buttonSize;
 	struct Button
 	{
@@ -26,7 +24,9 @@ public:
 	~StateMenu() {};
 	virtual void update();
 	virtual void render();
-	virtual void checkButtons();
+	virtual void checkButtons(sf::Event);
+	virtual void pollEvent();
+	bool isMouseReleased(sf::Event);
 	void checkClick();
 	bool mouseOnButton(sf::Sprite&);
 	void handleClick(sf::Sprite&);
