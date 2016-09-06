@@ -155,6 +155,9 @@ void StateMenu::pollEvent()
 		}
 		checkButtons(event);
 		if (event.type == sf::Event::Closed)
+		{
+			end = true;
 			window.closeWindow();
+		}
 	}
 }

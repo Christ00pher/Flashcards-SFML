@@ -9,13 +9,6 @@ class StateMenu : public IState
 private:
 	const short TOTAL_BUTTONS;
 	sf::Vector2f buttonSize;
-	struct Button
-	{
-		sf::Texture t_button;
-		sf::Sprite button;
-		std::string defaultPath;
-		std::string markedPath;
-	};
 	Button button[4];
 	void highlightButton(int);
 	void undo(int);

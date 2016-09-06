@@ -15,6 +15,13 @@ protected:
 	bool stateOptions;
 	sf::Texture t_background;
 	sf::Sprite background;
+	struct Button
+	{
+		sf::Texture t_button;
+		sf::Sprite button;
+		std::string defaultPath;
+		std::string markedPath;
+	};
 public:
 	IState() {};
 	IState(Flashcards &flashcards);
@@ -26,5 +33,5 @@ public:
 	virtual bool getStart();
 	virtual bool getHandle();
 	virtual bool getOptions();
-	virtual bool toExit();
+	bool toExit();
 };
