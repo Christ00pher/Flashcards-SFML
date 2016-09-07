@@ -12,6 +12,8 @@
     <File Name="IState.cpp"/>
     <File Name="StateMenu.h"/>
     <File Name="StateMenu.cpp"/>
+    <File Name="StateOptions.h"/>
+    <File Name="StateOptions.cpp"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>

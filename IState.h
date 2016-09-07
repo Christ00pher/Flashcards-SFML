@@ -7,7 +7,7 @@ class IState
 {
 protected:
 	Flashcards* flashcards;
-	Window window;
+	Window* window;
 	bool end;
 	bool stateMenu;
 	bool stateStart;
@@ -23,15 +23,15 @@ protected:
 		std::string markedPath;
 	};
 public:
-	IState() {};
-	IState(Flashcards &flashcards);
+	IState();
 	virtual ~IState() {};
 	virtual void update() = 0;
 	virtual void render() = 0;
 	virtual void pollEvent();
-	virtual bool getMenu();
-	virtual bool getStart();
-	virtual bool getHandle();
-	virtual bool getOptions();
 	bool toExit();
+	bool getStateMenu();
+	bool getStateHandle();
+	bool getStateOptions();
+	bool getStateStart();
+	bool isActive();
 };

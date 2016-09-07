@@ -1,10 +1,12 @@
 #include "StateMenu.h"
 #include <iostream>
-StateMenu::StateMenu(Flashcards &flashcards) :
+StateMenu::StateMenu(Flashcards &flashcards, Window &window) :
 TOTAL_BUTTONS(4)
 {
 	//setting pointer to the flashcards object
 	this->flashcards = &flashcards;
+	this->window = &window;
+	
 	
 	//setting string paths to the resources
 	button[Start].defaultPath = "data/StateStart/startDefault.png";
@@ -39,13 +41,13 @@ void StateMenu::update()
 
 void StateMenu::render()
 {
-	window.startRender();
-	window.draw(background);
+	window->startRender();
+	window->draw(background);
 	for (int i = 0; i < TOTAL_BUTTONS; i++)
 	{
-		window.draw(button[i].button);
+		window->draw(button[i].button);
 	}
-	window.finishRender();
+	window->finishRender();
 }
 
 bool StateMenu::isMouseReleased(sf::Event event)
@@ -93,7 +95,7 @@ void StateMenu::checkButtons(sf::Event event)
 
 bool StateMenu::mouseOnButton(sf::Sprite &but)
 {
-	sf::Vector2i mousePos = sf::Mouse::getPosition( *(window.getWindow()) );
+	sf::Vector2i mousePos = sf::Mouse::getPosition( *(window->getWindow()) );
 	sf::Vector2f buttonPos = but.getPosition();
 	
 	if (mousePos.x >= buttonPos.x && mousePos.x <= buttonPos.x + 400
@@ -108,24 +110,25 @@ void StateMenu::handleClick(sf::Sprite& but)
 {
 	if (&but == &button[Start].button)
 	{
-		//set stateStart as TRUE
+		stateStart = true;
 	}
 	
 	else if (&but == &button[Handle].button)
 	{
-		//set stateHandle as TRUE
+		stateHandle = true;
 	}
 	
 	else if (&but == &button[Options].button)
 	{
-		//set stateOptions as TRUE
+		stateOptions = true;
 	}
 	
 	else if (&but == &button[Exit].button)
 	{
 		end = true;
-		window.closeWindow();
+		window->closeWindow();
 	}
+	stateMenu = false;
 }
 
 void StateMenu::highlightButton(int i)
@@ -143,21 +146,21 @@ void StateMenu::undo(int i)
 void StateMenu::pollEvent()
 {
 	sf::Event event;
-	while (window.getWindow()->pollEvent(event))
+	while (window->getWindow()->pollEvent(event))
 	{
 		if (event.type == sf::Event::MouseButtonReleased)
 			leftClick = !leftClick;
 			
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !leftClick)
 		{
-			leftClickPos = sf::Mouse::getPosition( *(window.getWindow()) );
+			leftClickPos = sf::Mouse::getPosition( *(window->getWindow()) );
 			leftClick = !leftClick;
 		}
 		checkButtons(event);
 		if (event.type == sf::Event::Closed)
 		{
 			end = true;
-			window.closeWindow();
+			window->closeWindow();
 		}
 	}
 }

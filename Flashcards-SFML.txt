@@ -1,1 +1,1 @@
-./Debug/main.cpp.o ./Debug/Window.cpp.o ./Debug/Flashcards.cpp.o ./Debug/IState.cpp.o ./Debug/StateMenu.cpp.o
+./Debug/main.cpp.o ./Debug/Window.cpp.o ./Debug/Flashcards.cpp.o ./Debug/IState.cpp.o ./Debug/StateMenu.cpp.o ./Debug/StateOptions.cpp.o

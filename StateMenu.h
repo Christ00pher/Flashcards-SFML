@@ -15,7 +15,7 @@ private:
 	sf::Vector2i leftClickPos;
 	bool leftClick;
 public:
-	StateMenu(Flashcards &flashcards);
+	StateMenu(Flashcards &flashcards, Window &window);
 	~StateMenu() {};
 	virtual void update();
 	virtual void render();

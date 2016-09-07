@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Chris
-Date                   :=06/09/16
+Date                   :=07/09/16
 CodeLitePath           :="/home/chris/.codelite"
 LinkerName             :=/usr/bin/g++
 SharedObjectLinkerName :=/usr/bin/g++ -shared -fPIC
@@ -60,7 +60,7 @@ AS       := /usr/bin/as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/Window.cpp$(ObjectSuffix) $(IntermediateDirectory)/Flashcards.cpp$(ObjectSuffix) $(IntermediateDirectory)/IState.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateMenu.cpp$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/Window.cpp$(ObjectSuffix) $(IntermediateDirectory)/Flashcards.cpp$(ObjectSuffix) $(IntermediateDirectory)/IState.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateMenu.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateOptions.cpp$(ObjectSuffix) 
 
 
 
@@ -130,6 +130,14 @@ $(IntermediateDirectory)/StateMenu.cpp$(DependSuffix): StateMenu.cpp
 
 $(IntermediateDirectory)/StateMenu.cpp$(PreprocessSuffix): StateMenu.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/StateMenu.cpp$(PreprocessSuffix) "StateMenu.cpp"
+
+$(IntermediateDirectory)/StateOptions.cpp$(ObjectSuffix): StateOptions.cpp $(IntermediateDirectory)/StateOptions.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/chris/CodeLiteProjects/Flashcards-SFML/StateOptions.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/StateOptions.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/StateOptions.cpp$(DependSuffix): StateOptions.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/StateOptions.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/StateOptions.cpp$(DependSuffix) -MM "StateOptions.cpp"
+
+$(IntermediateDirectory)/StateOptions.cpp$(PreprocessSuffix): StateOptions.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/StateOptions.cpp$(PreprocessSuffix) "StateOptions.cpp"
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

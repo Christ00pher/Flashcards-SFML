@@ -1,28 +1,33 @@
 #include "IState.h"
 #include <iostream>
 
-IState::IState(Flashcards &flashcards)
+IState::IState()
 {
-	this->flashcards = &flashcards;
 	end = false;
+	stateMenu = false;
+	stateHandle = false;
+	stateOptions = false;
+	stateStart = false;
+	stateHandle = false;
+	t_background.loadFromFile("data/background.jpg");
+	background.setTexture(t_background);
 }
 
 void IState::pollEvent()
 {
 	sf::Event event;
-	while (window.getWindow()->pollEvent(event))
+	while (window->getWindow()->pollEvent(event))
 	{
 		if (event.type == sf::Event::Closed)
-			window.closeWindow();
+			window->closeWindow();
 	}
 }
 
-bool IState::getMenu() { return stateMenu; }
-bool IState::getStart() { return stateStart; }
-bool IState::getHandle() { return stateHandle; }
-bool IState::getOptions() { return stateOptions; }
+bool IState::toExit() { return end; }
 
-bool IState::toExit()
-{
-	return end;
-}
+bool IState::getStateMenu() { return stateMenu; }
+bool IState::getStateHandle() { return stateHandle; }
+bool IState::getStateOptions() { return stateOptions; }
+bool IState::getStateStart() { return stateStart; }
+
+bool isActive() { return true; }
