@@ -32,5 +32,18 @@ void StateOptions::pollEvent()
 	{
 		if (event.type == sf::Event::Closed)
 			window->closeWindow();
+		if (event.type == sf::Event::KeyPressed)
+		{
+			if (event.key.code == sf::Keyboard::Escape)
+				stateMenu = true;
+		}
+		
+		if (event.type == sf::Event::MouseButtonReleased)
+		{
+			if (event.mouseButton.button == sf::Mouse::Left)
+			{
+				stateMenu = true;
+			}
+		}
 	}
 }

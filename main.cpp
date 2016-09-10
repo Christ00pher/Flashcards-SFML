@@ -20,7 +20,7 @@ int main()
 		if (state->getStateMenu()) 
 			state = new StateMenu(flashcards,window);
 		
-		if (state->getStateOptions())
+		else if (state->getStateOptions())
 			state = new StateOptions(flashcards,window);
 	}
 	return 0;

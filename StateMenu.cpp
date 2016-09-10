@@ -156,7 +156,9 @@ void StateMenu::pollEvent()
 			leftClickPos = sf::Mouse::getPosition( *(window->getWindow()) );
 			leftClick = !leftClick;
 		}
+		
 		checkButtons(event);
+		
 		if (event.type == sf::Event::Closed)
 		{
 			end = true;
