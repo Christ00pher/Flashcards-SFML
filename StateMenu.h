@@ -14,6 +14,8 @@ private:
 	void undo(int);
 	sf::Vector2i leftClickPos;
 	bool leftClick;
+	sf::Text text;
+	sf::String string;
 public:
 	StateMenu(Flashcards &flashcards, Window &window);
 	~StateMenu() {};

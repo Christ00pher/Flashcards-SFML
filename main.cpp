@@ -1,6 +1,5 @@
 #include "IState.h"
 #include "StateMenu.h"
-#include <iostream>
 #include "Flashcards.h"
 #include "StateOptions.h"
 #include "Window.h"

@@ -1,4 +1,4 @@
-Debug/main.cpp.o: main.cpp IState.h Flashcards.h Window.h \
+Debug/main.cpp.o: main.cpp IState.h Flashcards.h \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics.hpp \
  /home/chris/dev/sfml/SFML/include/SFML/Window.hpp \
  /home/chris/dev/sfml/SFML/include/SFML/System.hpp \
@@ -69,14 +69,12 @@ Debug/main.cpp.o: main.cpp IState.h Flashcards.h Window.h \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Glsl.hpp \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Glsl.inl \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Sprite.hpp \
- /home/chris/dev/sfml/SFML/include/SFML/Graphics/Text.hpp StateMenu.h \
- StateOptions.h
+ /home/chris/dev/sfml/SFML/include/SFML/Graphics/Text.hpp Window.h \
+ StateMenu.h StateOptions.h
 
 IState.h:
 
 Flashcards.h:
-
-Window.h:
 
 /home/chris/dev/sfml/SFML/include/SFML/Graphics.hpp:
 
@@ -219,6 +217,8 @@ Window.h:
 /home/chris/dev/sfml/SFML/include/SFML/Graphics/Sprite.hpp:
 
 /home/chris/dev/sfml/SFML/include/SFML/Graphics/Text.hpp:
+
+Window.h:
 
 StateMenu.h:
 

@@ -1,6 +1,9 @@
 #pragma once
 #include <map>
 #include <string>
+#include <ctime>
+#include <cstdlib>
+#include <SFML/Graphics.hpp>
 
 class Flashcards
 {
@@ -10,6 +13,7 @@ private:
     std::map<std::string, std::string> wrong_words; //contains wrong answers
     std::map<std::string, std::string> asked_words; //contains already asked words
 public:
-	Flashcards() {};
-	~Flashcards() {};
+	Flashcards();
+	~Flashcards();
+	void Add();
 };

@@ -159,6 +159,17 @@ void StateMenu::pollEvent()
 		
 		checkButtons(event);
 		
+		if (sf::Event::TextEntered)
+		{
+				string += event.text.unicode;
+			
+			if (event.text.unicode == 13)
+			{
+				std::cout << string.toAnsiString() << std::endl;
+				string.clear();
+			}
+		}
+		
 		if (event.type == sf::Event::Closed)
 		{
 			end = true;
