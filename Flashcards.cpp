@@ -1,13 +1,3 @@
 #include "Flashcards.h"
-#include <iostream>
+#include <map>
 
-Flashcards::Flashcards() 
-{
-}
-
-void Flashcards::setVar(int x) { example = x; }
-
-void Flashcards::showVar()
-{
-	std::cout << example << std::endl;
-}
