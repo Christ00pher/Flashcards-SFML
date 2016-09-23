@@ -16,3 +16,5 @@ I also added highlighting of the buttons when the mouse is on one of them. Final
 StateOptions works! Actually, user can only click on the 'Options' button and he will be transfered to the new window without ability of coming back, but it works! If I have more time, I will put some pics here. I'm also thinkg about creating some kind of singleton which will take care of handling sounds. See ya!
 
 Now we can come back to the StateMenu while clicking 'esc' key or just by klicking the mouse. Also added ability to add flashcards - without textbox, in stateMenu, just for now :)
+
+After short break caused by school obligations, the work on the project will be continued soon.
