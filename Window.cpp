@@ -2,7 +2,7 @@
 
 Window::Window()
 {
-	window.create(sf::VideoMode(800,600), "Fiszki");
+	window.create(sf::VideoMode(800,600), "Fiszki", sf::Style::Close | sf::Style::Titlebar);
 	window.setFramerateLimit(60);
 }
 

@@ -1,6 +1,5 @@
 #pragma once
 #include "IState.h"
-#include "Window.h"
 
 class StateOptions : public IState
 {

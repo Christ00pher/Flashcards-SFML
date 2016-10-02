@@ -1,4 +1,4 @@
-Debug/IState.cpp.o: IState.cpp IState.h Flashcards.h \
+Debug/TextBox.cpp.o: TextBox.cpp TextBox.h \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics.hpp \
  /home/chris/dev/sfml/SFML/include/SFML/Window.hpp \
  /home/chris/dev/sfml/SFML/include/SFML/System.hpp \
@@ -71,9 +71,7 @@ Debug/IState.cpp.o: IState.cpp IState.h Flashcards.h \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Sprite.hpp \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Text.hpp Window.h
 
-IState.h:
-
-Flashcards.h:
+TextBox.h:
 
 /home/chris/dev/sfml/SFML/include/SFML/Graphics.hpp:
 

@@ -3,6 +3,7 @@
 #include <string>
 #include <ctime>
 #include <cstdlib>
+#include <iostream>
 #include <SFML/Graphics.hpp>
 
 class Flashcards
@@ -15,5 +16,6 @@ private:
 public:
 	Flashcards();
 	~Flashcards();
-	void Add();
+	void add(sf::String string);
+	void show();
 };

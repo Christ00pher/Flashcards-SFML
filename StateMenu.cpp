@@ -18,10 +18,6 @@ TOTAL_BUTTONS(4)
 	button[Exit].defaultPath = "data/StateStart/exitDefault.png";
 	button[Exit].markedPath = "data/StateStart/exitMarked.png";
 	
-	//setting background
-	t_background.loadFromFile("data/background.jpg");
-	background.setTexture(t_background);
-	
 	//assigning textures to sprites
 	for (int i = 0; i < TOTAL_BUTTONS; ++i)
 	{
@@ -159,15 +155,26 @@ void StateMenu::pollEvent()
 		
 		checkButtons(event);
 		
-		if (sf::Event::TextEntered)
+		if (event.type == sf::Event::TextEntered)
 		{
-				string += event.text.unicode;
-			
 			if (event.text.unicode == 13)
 			{
-				std::cout << string.toAnsiString() << std::endl;
+				flashcards->add(string);
+				flashcards->show();
 				string.clear();
 			}
+			
+			else if (event.text.unicode < 128)
+			{
+				if (string.isEmpty())
+				{
+					if (event.text.unicode != 8)
+						string += event.text.unicode;
+				}
+				else 
+						string += event.text.unicode;
+			}
+				
 		}
 		
 		if (event.type == sf::Event::Closed)

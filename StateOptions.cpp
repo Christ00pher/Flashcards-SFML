@@ -7,7 +7,7 @@ StateOptions::StateOptions(Flashcards& flashcards, Window &window)
 	text.setString("Credits");
 	text.setCharacterSize(50);
 	text.setPosition(300,0);
-	//text.setColor(sf::Color::Black);
+	text.setColor(sf::Color::Black);
 	this->flashcards = &flashcards;
 	this->window = &window;
 }
