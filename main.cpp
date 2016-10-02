@@ -9,7 +9,6 @@ int main()
 {
 	Flashcards flashcards;
 	Window window;
-	
 	IState* state = new StateMenu(flashcards,window);
 	
 	while(!state->toExit())

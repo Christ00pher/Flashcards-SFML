@@ -15,7 +15,12 @@ private:
 	sf::String polish;
 	sf::String english;
 	sf::Text t_polish;
+	sf::Text t_english;
 	sf::Font font;
+	
+	void mark(sf::Event);
+	void handleInput(sf::Event);
+	void toReturn(sf::Event);
 public:
 	StateManage(Flashcards&,Window&);
 	~StateManage();

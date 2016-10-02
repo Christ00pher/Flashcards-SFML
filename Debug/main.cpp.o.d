@@ -70,7 +70,7 @@ Debug/main.cpp.o: main.cpp IState.h Flashcards.h \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Glsl.inl \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Sprite.hpp \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Text.hpp Window.h \
- StateMenu.h StateOptions.h TextBox.h StateManage.h
+ StateMenu.h StateOptions.h StateManage.h TextBox.h
 
 IState.h:
 
@@ -224,6 +224,6 @@ StateMenu.h:
 
 StateOptions.h:
 
-TextBox.h:
-
 StateManage.h:
+
+TextBox.h:
