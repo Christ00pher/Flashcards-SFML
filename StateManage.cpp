@@ -104,15 +104,19 @@ void StateManage::handleInput(sf::Event event)
 {
 	if (event.type == sf::Event::TextEntered)
 	{
-		if (event.text.unicode == 13)
+		if (event.text.unicode < 128 && tbPolish.isMarked())
 		{
-			flashcards->add(polish);
-			polish.clear();
-		}
-		
-		
-		else if (event.text.unicode < 128 && tbPolish.isMarked())
-		{
+			if (event.text.unicode == 13)
+			{
+				if (!polish.isEmpty() && !english.isEmpty())
+				{
+					flashcards->add(polish,english);
+					flashcards->show();
+					polish.clear();
+					english.clear();
+				}
+			}
+			
 			if (event.text.unicode == 9)
 			{
 				tbEnglish.mark();
@@ -122,7 +126,7 @@ void StateManage::handleInput(sf::Event event)
 			
 			if (polish.isEmpty())
 			{
-				if (event.text.unicode != 8)
+				if (event.text.unicode != 8 && event.text.unicode != 13)
 					polish += event.text.unicode;
 			}
 			
@@ -140,6 +144,13 @@ void StateManage::handleInput(sf::Event event)
 		
 		else if (event.text.unicode < 128 && tbEnglish.isMarked())
 		{
+			if (event.text.unicode == 13)
+			{
+				tbPolish.mark();
+				tbEnglish.remark();
+				return;
+			}
+			
 			if (event.text.unicode == 9)
 			{
 				tbPolish.mark();

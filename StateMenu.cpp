@@ -153,29 +153,9 @@ void StateMenu::pollEvent()
 			leftClick = !leftClick;
 		}
 		
-		checkButtons(event);
 		
-		if (event.type == sf::Event::TextEntered)
-		{
-			if (event.text.unicode == 13)
-			{
-				flashcards->add(string);
-				flashcards->show();
-				string.clear();
-			}
-			
-			else if (event.text.unicode < 128)
-			{
-				if (string.isEmpty())
-				{
-					if (event.text.unicode != 8)
-						string += event.text.unicode;
-				}
-				else 
-						string += event.text.unicode;
-			}
-				
-		}
+		
+		checkButtons(event);
 		
 		if (event.type == sf::Event::Closed)
 		{

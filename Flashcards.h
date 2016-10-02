@@ -16,6 +16,6 @@ private:
 public:
 	Flashcards();
 	~Flashcards();
-	void add(sf::String string);
+	void add(sf::String,sf::String);
 	void show();
 };
