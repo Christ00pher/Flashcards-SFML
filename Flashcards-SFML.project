@@ -23,6 +23,8 @@
     <File Name="TextBox.cpp"/>
     <File Name="StateManage.h"/>
     <File Name="StateManage.cpp"/>
+    <File Name="Caption.h"/>
+    <File Name="Caption.cpp"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>

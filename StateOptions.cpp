@@ -1,13 +1,15 @@
 #include "StateOptions.h"
 
 StateOptions::StateOptions(Flashcards& flashcards, Window &window)
+:credits()
 {
-	font.loadFromFile("data/StateOptions/Capture_it.ttf");
+	/*font.loadFromFile("data/StateOptions/Capture_it.ttf");
 	text.setFont(font);
 	text.setString("Credits");
 	text.setCharacterSize(50);
 	text.setPosition(300,0);
-	text.setColor(sf::Color::Black);
+	text.setColor(sf::Color::Black);*/
+	credits.setSize(200);
 	this->flashcards = &flashcards;
 	this->window = &window;
 }
@@ -21,7 +23,8 @@ void StateOptions::render()
 {
 	window->startRender();
 	window->draw(background);
-	window->draw(text);
+	//window->draw(text);
+	window->draw(credits.getText());
 	window->finishRender();
 }
 

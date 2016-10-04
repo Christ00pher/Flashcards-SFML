@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Chris
-Date                   :=02/10/16
+Date                   :=04/10/16
 CodeLitePath           :=/home/chris/.codelite
 LinkerName             :=/usr/bin/g++
 SharedObjectLinkerName :=/usr/bin/g++ -shared -fPIC
@@ -60,7 +60,7 @@ AS       := /usr/bin/as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/Window.cpp$(ObjectSuffix) $(IntermediateDirectory)/Flashcards.cpp$(ObjectSuffix) $(IntermediateDirectory)/IState.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateMenu.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateOptions.cpp$(ObjectSuffix) $(IntermediateDirectory)/TextBox.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateManage.cpp$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/Window.cpp$(ObjectSuffix) $(IntermediateDirectory)/Flashcards.cpp$(ObjectSuffix) $(IntermediateDirectory)/IState.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateMenu.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateOptions.cpp$(ObjectSuffix) $(IntermediateDirectory)/TextBox.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateManage.cpp$(ObjectSuffix) $(IntermediateDirectory)/Caption.cpp$(ObjectSuffix) 
 
 
 
@@ -154,6 +154,14 @@ $(IntermediateDirectory)/StateManage.cpp$(DependSuffix): StateManage.cpp
 
 $(IntermediateDirectory)/StateManage.cpp$(PreprocessSuffix): StateManage.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/StateManage.cpp$(PreprocessSuffix)StateManage.cpp
+
+$(IntermediateDirectory)/Caption.cpp$(ObjectSuffix): Caption.cpp $(IntermediateDirectory)/Caption.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/chris/CodeLiteProjects/Flashcards-SFML/Caption.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Caption.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/Caption.cpp$(DependSuffix): Caption.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Caption.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Caption.cpp$(DependSuffix) -MM Caption.cpp
+
+$(IntermediateDirectory)/Caption.cpp$(PreprocessSuffix): Caption.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Caption.cpp$(PreprocessSuffix)Caption.cpp
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)
