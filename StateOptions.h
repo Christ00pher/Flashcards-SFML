@@ -5,8 +5,6 @@
 class StateOptions : public IState
 {
 private:
-	//sf::Font font;
-	sf::Text text;
 	Caption credits;
 public:
 	StateOptions(Flashcards&,Window&);

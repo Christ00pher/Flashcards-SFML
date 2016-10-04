@@ -3,13 +3,8 @@
 StateOptions::StateOptions(Flashcards& flashcards, Window &window)
 :credits()
 {
-	/*font.loadFromFile("data/StateOptions/Capture_it.ttf");
-	text.setFont(font);
-	text.setString("Credits");
-	text.setCharacterSize(50);
-	text.setPosition(300,0);
-	text.setColor(sf::Color::Black);*/
-	credits.setSize(200);
+	//credits.setSize(100);
+	credits.setPosition( window.getX()/2, window.getY()/2);
 	this->flashcards = &flashcards;
 	this->window = &window;
 }
@@ -23,7 +18,6 @@ void StateOptions::render()
 {
 	window->startRender();
 	window->draw(background);
-	//window->draw(text);
 	window->draw(credits.getText());
 	window->finishRender();
 }

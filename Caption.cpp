@@ -12,6 +12,10 @@ Caption::Caption()
 	text.setCharacterSize(size);
 	text.setColor(color);
 	text.setString(string);
+	
+	sf::FloatRect textRect = text.getLocalBounds();
+	text.setOrigin(textRect.left + textRect.width/2.0f,
+					textRect.top  + textRect.height/2.0f);
 }
 
 Caption::~Caption() {}
@@ -29,6 +33,7 @@ Caption::Caption(std::string string, float x, float y, std::string fontPath)
 	text.setCharacterSize(size);
 	text.setColor(color);
 	text.setString(string);
+	text.setPosition(position);
 }
 
 sf::Text& Caption::getText() { return text; }

@@ -10,6 +10,7 @@ private:
 	sf::Vector2f size;
 	Window *window;
 	bool Marked;
+	sf::Vector2f textPosition;
 public:
 	TextBox(Window&,float x = 100,float y = 100);
 	TextBox();
@@ -19,5 +20,6 @@ public:
 	void remark();
 	bool isMarked();
 	sf::Vector2f getPosition();
+	sf::Vector2f getTextPosition();
 	sf::Vector2f getSize();
 };

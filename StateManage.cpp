@@ -10,12 +10,12 @@ StateManage::StateManage(Flashcards& flashcards, Window& window)
 	t_polish.setFont(font);
 	t_polish.setCharacterSize(30);
 	t_polish.setColor(sf::Color::Black);
-	t_polish.setPosition(tbPolish.getPosition().x + 3, tbPolish.getPosition().y - 3);
+	t_polish.setPosition(tbPolish.getTextPosition());
 	
 	t_english.setFont(font);
 	t_english.setCharacterSize(30);
 	t_english.setColor(sf::Color::Black);
-	t_english.setPosition(tbEnglish.getPosition().x + 3, tbEnglish.getPosition().y - 3);
+	t_english.setPosition(tbEnglish.getTextPosition());
 }
 
 StateManage::~StateManage() {}

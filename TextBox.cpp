@@ -6,6 +6,8 @@ TextBox::TextBox(Window &p_window, float x, float y)
 {
 	window = &p_window;
 	position = {x, y};
+	textPosition.x = x+3;
+	textPosition.y = y-3;
 	size = {300, 30};
 	textbox.setFillColor(sf::Color::White);
 	textbox.setOutlineColor(sf::Color::Black);
@@ -47,4 +49,9 @@ void TextBox::remark()
 bool TextBox::isMarked()
 {
 	return Marked;
+}
+
+sf::Vector2f TextBox::getTextPosition()
+{
+	return textPosition;
 }
