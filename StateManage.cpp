@@ -1,8 +1,9 @@
 #include "StateManage.h"
+#include <iostream>
 
 StateManage::StateManage(Flashcards& flashcards, Window& window)
-:tbEnglish(window,100,100),
- tbPolish(window,450,100)
+:tbEnglish(window,window.getX() / 4, 50),
+ tbPolish(window,3 * window.getX() / 4, 50)
 {
 	this->window = &window;
 	this->flashcards = &flashcards;
@@ -74,6 +75,8 @@ void StateManage::mark(sf::Event event)
 				&& mousePos.y >= tbEnglish.getPosition().y 
 				&& mousePos.y <= tbEnglish.getPosition().y + 30)
 				{
+					std::cout << "Position in func x: " << tbEnglish.getPosition().x << std::endl;
+					std::cout << "Position in func y: " << tbEnglish.getPosition().y << std::endl;
 					tbEnglish.mark();
 					tbPolish.remark();
 				}

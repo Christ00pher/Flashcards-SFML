@@ -9,7 +9,7 @@ private:
 	sf::Vector2f position;
 	sf::Vector2f size;
 	Window *window;
-	bool Marked;
+	bool marked;
 	sf::Vector2f textPosition;
 public:
 	TextBox(Window&,float x = 100,float y = 100);
