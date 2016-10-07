@@ -25,7 +25,6 @@ Caption::Caption(std::string string, float x, float y, std::string fontPath)
  size(30)
 {
 	this->string = string;
-	position = {x,y};
 	this->fontPath = fontPath;
 	
 	font.loadFromFile(fontPath);
@@ -33,6 +32,12 @@ Caption::Caption(std::string string, float x, float y, std::string fontPath)
 	text.setCharacterSize(size);
 	text.setColor(color);
 	text.setString(string);
+	
+	sf::FloatRect textRect = text.getLocalBounds();
+	text.setOrigin(textRect.left + textRect.width/2.0f,
+					textRect.top  + textRect.height/2.0f);
+					
+	position = {x,y};
 	text.setPosition(position);
 }
 

@@ -3,10 +3,14 @@
 
 StateManage::StateManage(Flashcards& flashcards, Window& window)
 :tbEnglish(window,window.getX() / 4, 50),
- tbPolish(window,3 * window.getX() / 4, 50)
+ tbPolish(window,3 * window.getX() / 4, 50),
+ c1("English word", window.getX() / 4, 20),
+ c2("Polish word", 3 * window.getX() / 4, 20)
 {
 	this->window = &window;
 	this->flashcards = &flashcards;
+	c1.setSize(25);
+	c2.setSize(25);
 	font.loadFromFile("data/StateOptions/Capture_it.ttf");
 	t_polish.setFont(font);
 	t_polish.setCharacterSize(30);
@@ -32,6 +36,9 @@ void StateManage::render()
 	window->draw(background);
 	tbEnglish.draw();
 	tbPolish.draw();
+	
+	window->draw(c2.getText());
+	window->draw(c1.getText());
 	window->draw(t_polish);
 	window->draw(t_english);
 	window->finishRender();
@@ -70,21 +77,26 @@ void StateManage::mark(sf::Event event)
 		{
 			sf::Vector2i mousePos = sf::Mouse::getPosition( *(window->getWindow()) );
 			
-			if (mousePos.x >= tbEnglish.getPosition().x 
-				&& mousePos.x <= tbEnglish.getPosition().x + 300
-				&& mousePos.y >= tbEnglish.getPosition().y 
-				&& mousePos.y <= tbEnglish.getPosition().y + 30)
-				{
-					std::cout << "Position in func x: " << tbEnglish.getPosition().x << std::endl;
-					std::cout << "Position in func y: " << tbEnglish.getPosition().y << std::endl;
-					tbEnglish.mark();
-					tbPolish.remark();
-				}
+			//getting up-left corner of textbox
+			int enX = tbEnglish.getPosition().x - 150;
+			int enY = tbEnglish.getPosition().y - 15;
 			
-			else if (mousePos.x >= tbPolish.getPosition().x 
-				&& mousePos.x <= tbPolish.getPosition().x + 300
-				&& mousePos.y >= tbPolish.getPosition().y 
-				&& mousePos.y <= tbPolish.getPosition().y + 30)
+			int plX = tbPolish.getPosition().x - 150;
+			int plY = tbPolish.getPosition().y - 15;
+			
+			if (mousePos.x >= enX
+				&& mousePos.x <= enX + 300
+				&& mousePos.y >= enY 
+				&& mousePos.y <= enY + 30)
+			{
+				tbEnglish.mark();
+				tbPolish.remark();
+			}
+			
+			else if (mousePos.x >= plX 
+					&& mousePos.x <= plX + 300
+					&& mousePos.y >= plY
+					&& mousePos.y <= plY + 30)
 				{
 					tbPolish.mark();
 					tbEnglish.remark();

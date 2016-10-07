@@ -2,6 +2,7 @@
 #include "IState.h"
 #include <SFML/Graphics.hpp>
 #include "TextBox.h"
+#include "Caption.h"
 
 class StateManage : public IState
 {
@@ -12,6 +13,7 @@ private:
 	Window *window;
 	bool isTbPolish;
 	bool isTbEnglish;
+	Caption c1,c2;
 	sf::String polish;
 	sf::String english;
 	sf::Text t_polish;
