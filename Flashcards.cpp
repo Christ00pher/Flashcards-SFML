@@ -49,8 +49,6 @@ void Flashcards::question()
         std::string answer;
         std::pair<std::string, std::string> question;
 		
-		
-		
         asked_words.clear();
     }
 }

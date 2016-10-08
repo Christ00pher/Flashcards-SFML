@@ -15,13 +15,14 @@ StateStart::~StateStart() {}
 
 void StateStart::pollEvent()
 {
+	bool toCheck;
 	sf::Event event;
 	while (window->getWindow()->pollEvent(event))
 	{
 		if (toReturn(event))
 			break;
 		
-		tbEnglish.getInput(event);
+		tbEnglish.getInput(event,toCheck);
 	}
 }
 

@@ -22,7 +22,7 @@ public:
 	void saveToFile();
 	void loadFromFile();
 	void question();
-	void handleAnswer(std::string);
+	void handleAnswer(std::string,std::string);
 	std::pair<std::string, std::string> random();
 	void isFull();
 	bool checkAsked(std::map<std::string, std::string>::iterator);

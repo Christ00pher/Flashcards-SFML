@@ -74,7 +74,7 @@ bool TextBox::mouseOnTextbox(sf::Vector2i mousePos)
 	return false;
 }
 
-void TextBox::getInput(sf::Event event)
+void TextBox::getInput(sf::Event event, Flashcards& flashcards)
 {
 	if (event.type == sf::Event::TextEntered)
 	{
@@ -82,7 +82,8 @@ void TextBox::getInput(sf::Event event)
 		{
 			if (event.text.unicode == enter)
 			{
-				//toCheck = true;
+				//flashcards.handleAnswer(,text.getString());
+				clear();
 			}
 			
 			if (isEmpty())
