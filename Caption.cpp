@@ -33,9 +33,7 @@ Caption::Caption(std::string string, float x, float y, std::string fontPath)
 	text.setColor(color);
 	text.setString(string);
 	
-	sf::FloatRect textRect = text.getLocalBounds();
-	text.setOrigin(textRect.left + textRect.width/2.0f,
-					textRect.top  + textRect.height/2.0f);
+	setOrigin();
 					
 	position = {x,y};
 	text.setPosition(position);
@@ -53,6 +51,8 @@ void Caption::setSize(int size)
 {
 	this->size = size;
 	text.setCharacterSize(size);
+	
+	setOrigin();
 }
 
 void Caption::setColor(sf::Color color)
@@ -72,4 +72,34 @@ void Caption::setText(std::string string)
 {
 	this->string = string;
 	text.setString(string);
+	
+	setOrigin();
+}
+
+void Caption::clear()
+{
+	string.clear();
+	setOrigin();
+}
+
+bool Caption::isEmpty()
+{
+	return string.isEmpty();
+}
+
+sf::String& Caption::getString()
+{
+	return string;
+}
+
+void Caption::add(sf::Event event)
+{
+	string += event.text.unicode;
+}
+
+void Caption::setOrigin()
+{
+	sf::FloatRect textRect = text.getLocalBounds();
+	text.setOrigin(textRect.left + textRect.width/2.0f,
+					textRect.top  + textRect.height/2.0f);
 }

@@ -1,6 +1,15 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Window.h"
+#include "Caption.h"
+#include "Flashcards.h"
+
+enum keys
+{
+	esc = 8,
+	enter = 13,
+	tab = 9
+};
 
 class TextBox
 {
@@ -11,6 +20,7 @@ private:
 	Window *window;
 	bool marked;
 	sf::Vector2f textPosition;
+	Caption text;
 public:
 	TextBox(Window&,float x = 100,float y = 100);
 	TextBox();
@@ -19,7 +29,13 @@ public:
 	void mark();
 	void remark();
 	bool isMarked();
+	bool isEmpty();
+	void clear();
+	sf::String& getString();
+	void setText(std::string);
 	sf::Vector2f getPosition();
 	sf::Vector2f getTextPosition();
 	sf::Vector2f getSize();
+	bool mouseOnTextbox(sf::Vector2i);
+	void getInput(sf::Event, TextBox&, Flashcards&);
 };

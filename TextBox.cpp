@@ -1,24 +1,23 @@
 #include "TextBox.h"
-#include <iostream>
 
 TextBox::TextBox() {}
 
 TextBox::TextBox(Window &p_window, float x, float y)
+:text("", x, y)
 {
 	window = &p_window;
+	
 	position = {x, y};
-	textPosition.x = x+3;
-	textPosition.y = y-3;
 	size = {300, 30};
+	
 	textbox.setFillColor(sf::Color::White);
 	textbox.setOutlineColor(sf::Color::Black);
 	textbox.setOutlineThickness(2);
 	textbox.setSize(size);
 	textbox.setOrigin(size.x/2, size.y/2);
 	textbox.setPosition(position);
+	
 	marked = false;
-	std::cout << "Position x: " << position.x << std::endl;
-	std::cout << "Position y: " << position.y << std::endl;
 }
 
 TextBox::~TextBox() {}
@@ -26,6 +25,7 @@ TextBox::~TextBox() {}
 void TextBox::draw()
 {
 	window->draw(textbox);
+	window->draw(text.getText());
 }
 
 sf::Vector2f TextBox::getPosition()
@@ -58,4 +58,123 @@ bool TextBox::isMarked()
 sf::Vector2f TextBox::getTextPosition()
 {
 	return textPosition;
+}
+
+bool TextBox::mouseOnTextbox(sf::Vector2i mousePos)
+{
+	int x = position.x - 150;
+	int y = position.y - 15;
+	
+	if (mousePos.x >= x
+		&& mousePos.x <= x + 300
+		&& mousePos.y >= y 
+		&& mousePos.y <= y + 30)
+		return true;
+	
+	return false;
+}
+
+void TextBox::getInput(sf::Event event, TextBox& tbEnglish, Flashcards &flashcards)
+{
+	if (event.type == sf::Event::TextEntered)
+	{
+		if (!this->isMarked() && !tbEnglish.isMarked() && event.text.unicode == tab)
+		{
+			tbEnglish.mark();
+			return;
+		}
+		
+		if (event.text.unicode < 128 && this->isMarked())
+		{
+			if (event.text.unicode == enter)
+			{
+				if (!this->isEmpty() && !tbEnglish.isEmpty())
+				{
+					flashcards.add(text.getString(),tbEnglish.getString());
+					flashcards.show();
+					this->clear();
+					tbEnglish.clear();
+				}
+			}
+			
+			if (event.text.unicode == tab)
+			{
+				tbEnglish.mark();
+				this->remark();
+				return;
+			}
+			
+			if (this->isEmpty())
+			{
+				if (event.text.unicode != esc && event.text.unicode != enter)
+					text.add(event);
+			}
+			
+			else 
+			{
+				if (event.text.unicode == esc && !this->isEmpty())
+				{
+					this->getString().erase(this->getString().getSize() - 1);
+				}
+				else
+					text.add(event);
+			}
+			
+		}
+		
+		else if (event.text.unicode < 128 && tbEnglish.isMarked())
+		{
+			if (event.text.unicode == enter)
+			{
+				this->mark();
+				tbEnglish.remark();
+				return;
+			}
+			
+			if (event.text.unicode == tab)
+			{
+				this->mark();
+				tbEnglish.remark();
+				return;
+			}
+			
+			if (tbEnglish.isEmpty())
+			{
+				if (event.text.unicode != esc)
+					tbEnglish.getString() += event.text.unicode;
+			}
+			else 
+			{
+				if (event.text.unicode == esc && !tbEnglish.isEmpty())
+				{
+					tbEnglish.getString().erase(tbEnglish.getString().getSize() - 1);
+				}
+				else
+					tbEnglish.getString() += event.text.unicode;
+			}
+		}
+		
+		text.setText(this->getString());
+		tbEnglish.setText(tbEnglish.getString());
+	}
+}
+
+void TextBox::setText(std::string string)
+{
+	text.setText(string);
+}
+
+void TextBox::clear()
+{
+	text.clear();
+}
+
+bool TextBox::isEmpty()
+{
+	return text.isEmpty();
+}
+
+sf::String& TextBox::getString()
+{
+	return text.getString();
 }

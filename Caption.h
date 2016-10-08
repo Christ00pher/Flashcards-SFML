@@ -12,14 +12,21 @@ private:
 	int size;
 	std::string fontPath;
 	sf::Color color;
+	
+	void setOrigin();
+	
 public:
 	Caption();
 	~Caption();
 	Caption(std::string,float = 0,float = 0,std::string s = "data/StateOptions/Capture_it.ttf");
 	sf::Text& getText();
+	sf::String& getString();
+	void add(sf::Event);
 	void setPosition(float,float);
 	void setSize(int);
 	void setColor(sf::Color);
 	void setFont(std::string);
 	void setText(std::string);
+	void clear();
+	bool isEmpty();
 };
