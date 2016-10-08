@@ -48,15 +48,9 @@ void Flashcards::question()
     {
         std::string answer;
         std::pair<std::string, std::string> question;
-        //cout << "Tap 'end' to stop asking questions\n\n";
-
-        /*while (answer != "end")
-        {
-            question = Random();
-            cout << question.first << " = ";
-            cin >> answer;
-            HandleAnswer(answer, question);
-        }*/
+		
+		
+		
         asked_words.clear();
     }
 }

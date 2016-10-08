@@ -8,7 +8,10 @@ class StateStart : public IState
 private:
 	TextBox tbEnglish;
 	TextBox tbPolish;
-	
+	Caption cEnglish;
+	Caption cPolish;
+	Caption success;
+	Caption mistake;
 public:
 	StateStart(Flashcards&,Window&);
 	~StateStart();

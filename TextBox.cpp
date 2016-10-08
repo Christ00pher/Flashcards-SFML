@@ -74,6 +74,37 @@ bool TextBox::mouseOnTextbox(sf::Vector2i mousePos)
 	return false;
 }
 
+void TextBox::getInput(sf::Event event)
+{
+	if (event.type == sf::Event::TextEntered)
+	{
+		if (event.text.unicode < 128)
+		{
+			if (event.text.unicode == enter)
+			{
+				//toCheck = true;
+			}
+			
+			if (isEmpty())
+			{
+				if (event.text.unicode != esc && event.text.unicode != enter)
+					text.add(event);
+			}
+			
+			else 
+			{
+				if (event.text.unicode == esc && !isEmpty())
+				{
+					text.getString().erase(text.getString().getSize() - 1);
+				}
+				else
+					text.add(event);
+			}
+		}
+		text.setString(getString());
+	}
+}
+
 void TextBox::getInput(sf::Event event, TextBox& tbEnglish, Flashcards &flashcards)
 {
 	if (event.type == sf::Event::TextEntered)
@@ -92,8 +123,8 @@ void TextBox::getInput(sf::Event event, TextBox& tbEnglish, Flashcards &flashcar
 				{
 					flashcards.add(text.getString(),tbEnglish.getString());
 					flashcards.show();
-					this->clear();
 					tbEnglish.clear();
+					this->setString("");
 				}
 			}
 			
@@ -153,15 +184,13 @@ void TextBox::getInput(sf::Event event, TextBox& tbEnglish, Flashcards &flashcar
 					tbEnglish.getString() += event.text.unicode;
 			}
 		}
-		
-		text.setText(this->getString());
-		tbEnglish.setText(tbEnglish.getString());
+		tbEnglish.setString(tbEnglish.getString());
 	}
 }
 
-void TextBox::setText(std::string string)
+void TextBox::setString(std::string string)
 {
-	text.setText(string);
+	text.setString(string);
 }
 
 void TextBox::clear()

@@ -32,10 +32,11 @@ public:
 	bool isEmpty();
 	void clear();
 	sf::String& getString();
-	void setText(std::string);
+	void setString(std::string);
 	sf::Vector2f getPosition();
 	sf::Vector2f getTextPosition();
 	sf::Vector2f getSize();
 	bool mouseOnTextbox(sf::Vector2i);
 	void getInput(sf::Event, TextBox&, Flashcards&);
+	void getInput(sf::Event);
 };

@@ -26,7 +26,7 @@ public:
 	void setSize(int);
 	void setColor(sf::Color);
 	void setFont(std::string);
-	void setText(std::string);
+	void setString(std::string);
 	void clear();
 	bool isEmpty();
 };

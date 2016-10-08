@@ -26,17 +26,17 @@ void StateManage::render()
 	tbEnglish.draw();
 	tbPolish.draw();
 	
-	window->draw(c2.getText());
-	window->draw(c1.getText());
+	window->draw( c2.getText() );
+	window->draw( c1.getText() );
 	window->finishRender();
 }
 
 void StateManage::pollEvent()
 {
 	sf::Event event;
-	while (window->getWindow()->pollEvent(event))
+	while ( window->getWindow()->pollEvent(event) )
 	{
-		if (toReturn(event))
+		if ( toReturn(event) )
 			break;
 		
 		mark(event);

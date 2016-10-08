@@ -68,7 +68,7 @@ void Caption::setFont(std::string fontPath)
 	text.setFont(font);
 }
 
-void Caption::setText(std::string string)
+void Caption::setString(std::string string)
 {
 	this->string = string;
 	text.setString(string);
@@ -95,6 +95,8 @@ sf::String& Caption::getString()
 void Caption::add(sf::Event event)
 {
 	string += event.text.unicode;
+	text.setString(string);
+	setOrigin();
 }
 
 void Caption::setOrigin()
