@@ -60,7 +60,8 @@ AS       := /usr/bin/as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/Window.cpp$(ObjectSuffix) $(IntermediateDirectory)/Flashcards.cpp$(ObjectSuffix) $(IntermediateDirectory)/IState.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateMenu.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateOptions.cpp$(ObjectSuffix) $(IntermediateDirectory)/TextBox.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateManage.cpp$(ObjectSuffix) $(IntermediateDirectory)/Caption.cpp$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/Window.cpp$(ObjectSuffix) $(IntermediateDirectory)/Flashcards.cpp$(ObjectSuffix) $(IntermediateDirectory)/IState.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateMenu.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateOptions.cpp$(ObjectSuffix) $(IntermediateDirectory)/TextBox.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateManage.cpp$(ObjectSuffix) $(IntermediateDirectory)/Caption.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateStart.cpp$(ObjectSuffix) \
+	
 
 
 
@@ -162,6 +163,14 @@ $(IntermediateDirectory)/Caption.cpp$(DependSuffix): Caption.cpp
 
 $(IntermediateDirectory)/Caption.cpp$(PreprocessSuffix): Caption.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Caption.cpp$(PreprocessSuffix)Caption.cpp
+
+$(IntermediateDirectory)/StateStart.cpp$(ObjectSuffix): StateStart.cpp $(IntermediateDirectory)/StateStart.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/chris/CodeLiteProjects/Flashcards-SFML/StateStart.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/StateStart.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/StateStart.cpp$(DependSuffix): StateStart.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/StateStart.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/StateStart.cpp$(DependSuffix) -MM StateStart.cpp
+
+$(IntermediateDirectory)/StateStart.cpp$(PreprocessSuffix): StateStart.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/StateStart.cpp$(PreprocessSuffix)StateStart.cpp
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

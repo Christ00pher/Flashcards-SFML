@@ -31,4 +31,18 @@ bool IState::getStateHandle() { return stateHandle; }
 bool IState::getStateOptions() { return stateOptions; }
 bool IState::getStateStart() { return stateStart; }
 
-bool isActive() { return true; }
+//bool IState::isActive() { return true; }
+
+bool IState::toReturn(sf::Event event)
+{
+	if (event.type == sf::Event::Closed)
+			window->closeWindow();
+			
+	if (event.type == sf::Event::KeyPressed)
+	{
+		if (event.key.code == sf::Keyboard::Escape)
+			stateMenu = true;
+	}
+	
+	return stateMenu;
+}

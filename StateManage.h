@@ -2,15 +2,12 @@
 #include "IState.h"
 #include <SFML/Graphics.hpp>
 #include "TextBox.h"
-#include "Caption.h"
 
 class StateManage : public IState
 {
 private:
 	TextBox tbEnglish;
 	TextBox tbPolish;
-	Flashcards *flashcards;
-	Window *window;
 	bool isTbPolish;
 	bool isTbEnglish;
 	Caption c1,c2;

@@ -4,6 +4,7 @@
 #include "StateOptions.h"
 #include "Window.h"
 #include "StateManage.h"
+#include "StateStart.h"
 
 int main()
 {
@@ -24,6 +25,9 @@ int main()
 			
 		else if (state->getStateHandle())
 			state = new StateManage(flashcards,window);
+		
+		else if (state->getStateStart())
+			state = new StateStart(flashcards,window);
 	}
 	return 0;
 }

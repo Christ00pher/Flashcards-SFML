@@ -28,6 +28,7 @@ public:
 	virtual void update() = 0;
 	virtual void render() = 0;
 	virtual void pollEvent();
+	bool toReturn(sf::Event);
 	bool toExit();
 	bool getStateMenu();
 	bool getStateHandle();
