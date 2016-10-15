@@ -80,27 +80,13 @@ void TextBox::getInput(sf::Event event)
 	{
 		if (event.text.unicode < 128)
 		{
-			/*if (event.text.unicode == enter)
-			{
-				clear();
-			}*/
+			if (!unwantedKeys(event))
+				text.add(event);
 			
-			if (isEmpty())
-			{
-				if (event.text.unicode != esc && event.text.unicode != enter)
-					text.add(event);
-			}
-			
-			else 
-			{
-				if (event.text.unicode == esc && !isEmpty())
-				{
-					text.getString().erase(text.getString().getSize() - 1);
-				}
-				else
-					text.add(event);
-			}
+			if (event.text.unicode == esc && !isEmpty())
+				text.getString().erase(text.getString().getSize() - 1);
 		}
+		
 		text.setString(getString());
 	}
 }
@@ -123,4 +109,14 @@ bool TextBox::isEmpty()
 sf::String& TextBox::getString()
 {
 	return text.getString();
+}
+
+bool TextBox::unwantedKeys(sf::Event event)
+{
+	if (event.text.unicode == esc ||
+		event.text.unicode == enter ||
+		event.text.unicode == tab)
+			return true;
+	
+	return false;
 }

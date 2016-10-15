@@ -19,6 +19,7 @@ Flashcards::~Flashcards()
 void Flashcards::add(sf::String polish, sf::String english) 
 {
 	all_words[english] = polish;
+	std::cout << (std::string)english << " = " << (std::string)polish << std::endl;
 }
 
 void Flashcards::show() 

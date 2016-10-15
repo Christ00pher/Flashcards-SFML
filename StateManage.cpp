@@ -95,7 +95,7 @@ void StateManage::handleInput(sf::Event event)
 	{
 		if (event.text.unicode < 128)
 		{
-			if (event.text.unicode == enter || event.text.unicode == tab)
+			if (event.text.unicode == tab)
 				remark();
 			
 			if (event.text.unicode == enter)
@@ -113,7 +113,7 @@ void StateManage::handleInput(sf::Event event)
 				tbPolish.getInput(event);
 			}
 			
-			else if (tbEnglish.isMarked())
+			if (tbEnglish.isMarked())
 			{
 				tbEnglish.getInput(event);
 			}

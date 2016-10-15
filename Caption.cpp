@@ -72,13 +72,13 @@ void Caption::setString(std::string string)
 {
 	this->string = string;
 	text.setString(string);
-	
 	setOrigin();
 }
 
 void Caption::clear()
 {
 	string.clear();
+	text.setString(string);
 	setOrigin();
 }
 

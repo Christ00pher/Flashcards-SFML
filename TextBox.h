@@ -38,4 +38,5 @@ public:
 	sf::Vector2f getSize();
 	bool mouseOnTextbox(sf::Vector2i);
 	void getInput(sf::Event);
+	bool unwantedKeys(sf::Event);
 };
