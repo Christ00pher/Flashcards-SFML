@@ -37,6 +37,5 @@ public:
 	sf::Vector2f getTextPosition();
 	sf::Vector2f getSize();
 	bool mouseOnTextbox(sf::Vector2i);
-	void getInput(sf::Event, TextBox&, Flashcards&);
-	void getInput(sf::Event,Flashcards&);
+	void getInput(sf::Event);
 };

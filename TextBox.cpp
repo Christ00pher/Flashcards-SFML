@@ -74,17 +74,16 @@ bool TextBox::mouseOnTextbox(sf::Vector2i mousePos)
 	return false;
 }
 
-void TextBox::getInput(sf::Event event, Flashcards& flashcards)
+void TextBox::getInput(sf::Event event)
 {
 	if (event.type == sf::Event::TextEntered)
 	{
 		if (event.text.unicode < 128)
 		{
-			if (event.text.unicode == enter)
+			/*if (event.text.unicode == enter)
 			{
-				//flashcards.handleAnswer(,text.getString());
 				clear();
-			}
+			}*/
 			
 			if (isEmpty())
 			{
@@ -103,89 +102,6 @@ void TextBox::getInput(sf::Event event, Flashcards& flashcards)
 			}
 		}
 		text.setString(getString());
-	}
-}
-
-void TextBox::getInput(sf::Event event, TextBox& tbEnglish, Flashcards &flashcards)
-{
-	if (event.type == sf::Event::TextEntered)
-	{
-		if (!this->isMarked() && !tbEnglish.isMarked() && event.text.unicode == tab)
-		{
-			tbEnglish.mark();
-			return;
-		}
-		
-		if (event.text.unicode < 128 && this->isMarked())
-		{
-			if (event.text.unicode == enter)
-			{
-				if (!this->isEmpty() && !tbEnglish.isEmpty())
-				{
-					flashcards.add(text.getString(),tbEnglish.getString());
-					flashcards.show();
-					tbEnglish.clear();
-					this->setString("");
-				}
-			}
-			
-			if (event.text.unicode == tab)
-			{
-				tbEnglish.mark();
-				this->remark();
-				return;
-			}
-			
-			if (this->isEmpty())
-			{
-				if (event.text.unicode != esc && event.text.unicode != enter)
-					text.add(event);
-			}
-			
-			else 
-			{
-				if (event.text.unicode == esc && !this->isEmpty())
-				{
-					this->getString().erase(this->getString().getSize() - 1);
-				}
-				else
-					text.add(event);
-			}
-			
-		}
-		
-		else if (event.text.unicode < 128 && tbEnglish.isMarked())
-		{
-			if (event.text.unicode == enter)
-			{
-				this->mark();
-				tbEnglish.remark();
-				return;
-			}
-			
-			if (event.text.unicode == tab)
-			{
-				this->mark();
-				tbEnglish.remark();
-				return;
-			}
-			
-			if (tbEnglish.isEmpty())
-			{
-				if (event.text.unicode != esc)
-					tbEnglish.getString() += event.text.unicode;
-			}
-			else 
-			{
-				if (event.text.unicode == esc && !tbEnglish.isEmpty())
-				{
-					tbEnglish.getString().erase(tbEnglish.getString().getSize() - 1);
-				}
-				else
-					tbEnglish.getString() += event.text.unicode;
-			}
-		}
-		tbEnglish.setString(tbEnglish.getString());
 	}
 }
 

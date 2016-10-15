@@ -15,6 +15,8 @@ private:
 	void mark(sf::Event);
 	void handleInput(sf::Event);
 	bool toReturn(sf::Event);
+	void remark();
+	bool isCorrect();
 public:
 	StateManage(Flashcards&,Window&);
 	~StateManage();

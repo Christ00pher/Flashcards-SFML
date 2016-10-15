@@ -91,5 +91,55 @@ void StateManage::mark(sf::Event event)
 
 void StateManage::handleInput(sf::Event event)
 {
-	tbPolish.getInput(event,tbEnglish,*flashcards);
+	if (event.type == sf::Event::TextEntered)
+	{
+		if (event.text.unicode < 128)
+		{
+			if (event.text.unicode == enter || event.text.unicode == tab)
+				remark();
+			
+			if (event.text.unicode == enter)
+			{
+				if ( isCorrect() )
+				{
+					flashcards->add( tbPolish.getString(), tbEnglish.getString() );
+					tbPolish.clear();
+					tbEnglish.clear();
+				}
+			}
+			
+			if (tbPolish.isMarked())
+			{
+				tbPolish.getInput(event);
+			}
+			
+			else if (tbEnglish.isMarked())
+			{
+				tbEnglish.getInput(event);
+			}
+		}
+	}
+}
+
+void StateManage::remark()
+{
+	if (tbPolish.isMarked())
+	{
+		tbPolish.remark();
+		tbEnglish.mark();
+	}
+	
+	else if (tbEnglish.isMarked())
+	{
+		tbEnglish.remark();
+		tbPolish.mark();
+	}
+}
+
+bool StateManage::isCorrect()
+{
+	if (tbEnglish.getString() != "" && tbPolish.getString() != "")
+		return true;
+		
+	return false;
 }

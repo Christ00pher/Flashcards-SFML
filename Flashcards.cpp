@@ -42,7 +42,7 @@ void Flashcards::saveToFile()
     file.close();
 }
 
-void Flashcards::question()
+void Flashcards::ask()
 {
     if (!all_words.empty())
     {

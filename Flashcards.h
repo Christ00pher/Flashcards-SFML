@@ -14,6 +14,8 @@ private:
     std::map<std::string, std::string> correct_words; //contains correct answers
     std::map<std::string, std::string> wrong_words; //contains wrong answers
     std::map<std::string, std::string> asked_words; //contains already asked words
+	std::string question; //helper variable containing questioned word
+	std::string answer; //helper variable conatining user's answer
 public:
 	Flashcards();
 	~Flashcards();
@@ -21,8 +23,8 @@ public:
 	void show();
 	void saveToFile();
 	void loadFromFile();
-	void question();
-	void handleAnswer(std::string,std::string);
+	void ask();
+	void handleAnswer(std::string);
 	std::pair<std::string, std::string> random();
 	void isFull();
 	bool checkAsked(std::map<std::string, std::string>::iterator);
