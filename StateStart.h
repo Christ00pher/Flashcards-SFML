@@ -12,6 +12,7 @@ private:
 	Caption cPolish;
 	Caption success;
 	Caption mistake;
+	bool newQuestion;
 public:
 	StateStart(Flashcards&,Window&);
 	~StateStart();
@@ -19,4 +20,5 @@ public:
 	virtual void render();
 	virtual void pollEvent();
 	void getInput();
+	bool isCorrect();
 };

@@ -14,18 +14,20 @@ private:
     std::map<std::string, std::string> correct_words; //contains correct answers
     std::map<std::string, std::string> wrong_words; //contains wrong answers
     std::map<std::string, std::string> asked_words; //contains already asked words
-	std::string question; //helper variable containing questioned word
-	std::string answer; //helper variable conatining user's answer
+	std::string answer; //english word
+	std::string question; //polish word
 public:
 	Flashcards();
 	~Flashcards();
+	std::string getAnswer();
+	std::string getQuestion();
 	void add(sf::String,sf::String);
 	void show();
 	void saveToFile();
 	void loadFromFile();
 	void ask();
 	void handleAnswer(std::string);
-	std::pair<std::string, std::string> random();
+	void random();
 	void isFull();
 	bool checkAsked(std::map<std::string, std::string>::iterator);
 	void clearAll();

@@ -6,7 +6,6 @@ Flashcards::Flashcards()
 	wrong_words.clear();
 	correct_words.clear();
 	asked_words.clear();
-	
 }
 
 Flashcards::~Flashcards()
@@ -45,13 +44,7 @@ void Flashcards::saveToFile()
 
 void Flashcards::ask()
 {
-    if (!all_words.empty())
-    {
-        std::string answer;
-        std::pair<std::string, std::string> question;
-		
-        asked_words.clear();
-    }
+	random();
 }
 
 void Flashcards::handleAnswer(std::string answer)
@@ -69,7 +62,7 @@ void Flashcards::handleAnswer(std::string answer)
 	}*/
 }
 
-std::pair<std::string, std::string> Flashcards::random()
+void Flashcards::random()
 {
     int n; //random number
     std::map<std::string, std::string>::iterator it;
@@ -82,8 +75,9 @@ std::pair<std::string, std::string> Flashcards::random()
     } while (checkAsked(it));
 
     isFull();
-
-    return *it;
+	
+	question = it->second;
+	answer = it->first;
 }
 
 void Flashcards::isFull()
@@ -144,4 +138,14 @@ void Flashcards::clearFile()
     file.open("flashcards.txt", std::ios::out);
     file << "";
     file.close();
+}
+
+std::string Flashcards::getQuestion()
+{
+	return question;
+}
+
+std::string Flashcards::getAnswer()
+{
+	return answer;
 }

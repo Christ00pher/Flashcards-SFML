@@ -1,4 +1,5 @@
 #include "StateStart.h"
+#include <iostream>
 
 StateStart::StateStart(Flashcards& flashcards, Window& window)
 :tbPolish(window, window.getX() / 4, window.getY() / 3),
@@ -9,6 +10,7 @@ StateStart::StateStart(Flashcards& flashcards, Window& window)
 	this->window = &window;
 	this->flashcards = &flashcards;
 	tbEnglish.mark();
+	newQuestion = true;
 }
 
 StateStart::~StateStart() {}
@@ -20,6 +22,21 @@ void StateStart::pollEvent()
 	{
 		if (toReturn(event))
 			break;
+			
+		if (event.text.unicode == enter)
+		{
+			if ( isCorrect() )
+			{
+				std::cout << "Correct!" << std::endl;
+			}
+			else
+			{
+				std::cout << "Bad!" << std::endl;
+			}
+			
+			newQuestion = true;
+			tbEnglish.clear();
+		}
 		
 		tbEnglish.getInput(event);
 	}
@@ -38,6 +55,19 @@ void StateStart::render()
 
 void StateStart::update()
 {
+	if (newQuestion)
+	{
+		flashcards->ask();
+		tbPolish.setString( flashcards->getQuestion() );
+		newQuestion = false;
+	}
 	pollEvent();
 }
 
+bool StateStart::isCorrect()
+{
+	if (tbEnglish.getString() == flashcards->getAnswer())
+		return true;
+	
+	return false;
+}
