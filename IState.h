@@ -1,6 +1,7 @@
 #pragma once
 #include "Flashcards.h"
 #include "Window.h"
+#include "Button.h"
 #include <SFML/Graphics.hpp>
 
 class IState
@@ -15,13 +16,6 @@ protected:
 	bool stateOptions;
 	sf::Texture t_background;
 	sf::Sprite background;
-	struct Button
-	{
-		sf::Texture t_button;
-		sf::Sprite button;
-		std::string defaultPath;
-		std::string markedPath;
-	};
 public:
 	IState();
 	virtual ~IState() {};

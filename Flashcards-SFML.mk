@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Chris
-Date                   :=16/10/16
+Date                   :=23/10/16
 CodeLitePath           :=/home/chris/.codelite
 LinkerName             :=/usr/bin/g++
 SharedObjectLinkerName :=/usr/bin/g++ -shared -fPIC
@@ -61,7 +61,7 @@ AS       := /usr/bin/as
 ##
 CodeLiteDir:=/usr/share/codelite
 Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/Window.cpp$(ObjectSuffix) $(IntermediateDirectory)/Flashcards.cpp$(ObjectSuffix) $(IntermediateDirectory)/IState.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateMenu.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateOptions.cpp$(ObjectSuffix) $(IntermediateDirectory)/TextBox.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateManage.cpp$(ObjectSuffix) $(IntermediateDirectory)/Caption.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateStart.cpp$(ObjectSuffix) \
-	
+	$(IntermediateDirectory)/Button.cpp$(ObjectSuffix) 
 
 
 
@@ -171,6 +171,14 @@ $(IntermediateDirectory)/StateStart.cpp$(DependSuffix): StateStart.cpp
 
 $(IntermediateDirectory)/StateStart.cpp$(PreprocessSuffix): StateStart.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/StateStart.cpp$(PreprocessSuffix)StateStart.cpp
+
+$(IntermediateDirectory)/Button.cpp$(ObjectSuffix): Button.cpp $(IntermediateDirectory)/Button.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/chris/CodeLiteProjects/Flashcards-SFML/Button.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Button.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/Button.cpp$(DependSuffix): Button.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Button.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Button.cpp$(DependSuffix) -MM Button.cpp
+
+$(IntermediateDirectory)/Button.cpp$(PreprocessSuffix): Button.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Button.cpp$(PreprocessSuffix)Button.cpp
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

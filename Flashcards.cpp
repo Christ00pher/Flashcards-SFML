@@ -47,37 +47,42 @@ void Flashcards::ask()
 	random();
 }
 
-void Flashcards::handleAnswer(std::string answer)
+bool Flashcards::isCorrect(std::string answer)
 {
-    /*if (answer == question.second)
+	/*
+    if (answer == question.second)
 	{
 		correct_words.insert(question);
-		//throw communicate
+		return true;
 	}
 	
     else
 	{
 		wrong_words.insert(question);
-		//throw communicate
-	}*/
+		return false;
+	}
+	 * */
 }
 
 void Flashcards::random()
 {
-    int n; //random number
-    std::map<std::string, std::string>::iterator it;
-    do
-    {
-        n = rand() % (all_words.size());
-        it = all_words.begin();
-        for (int i = 0; i < n; i++)
-            it++;
-    } while (checkAsked(it));
+    if (all_words.size() != 0)
+	{
+		int n; //random number
+		std::map<std::string, std::string>::iterator it;
+		do
+		{
+			n = rand() % (all_words.size());
+			it = all_words.begin();
+			for (int i = 0; i < n; i++)
+				it++;
+		} while (checkAsked(it));
 
-    isFull();
-	
-	question = it->second;
-	answer = it->first;
+		isFull();
+		
+		question = it->second;
+		answer = it->first;
+	}
 }
 
 void Flashcards::isFull()

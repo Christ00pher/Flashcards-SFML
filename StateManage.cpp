@@ -95,9 +95,6 @@ void StateManage::handleInput(sf::Event event)
 	{
 		if (event.text.unicode < 128)
 		{
-			if (event.text.unicode == tab)
-				remark();
-			
 			if (event.text.unicode == enter)
 			{
 				if ( isCorrect() )
@@ -105,8 +102,13 @@ void StateManage::handleInput(sf::Event event)
 					flashcards->add( tbPolish.getString(), tbEnglish.getString() );
 					tbPolish.clear();
 					tbEnglish.clear();
+					remark();
+					return;
 				}
 			}
+			
+			if (event.text.unicode == tab || event.text.unicode == enter)
+				remark();
 			
 			if (tbPolish.isMarked())
 			{

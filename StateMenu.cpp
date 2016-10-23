@@ -1,30 +1,15 @@
 #include "StateMenu.h"
 #include <iostream>
-StateMenu::StateMenu(Flashcards &flashcards, Window &window) :
-TOTAL_BUTTONS(4)
+StateMenu::StateMenu(Flashcards &flashcards, Window &window)
+:TOTAL_BUTTONS(4),
+ start("data/StateStart/startDefault.png", "data/StateStart/startMarked.png",{400,80}),
+ manage("data/StateStart/handleDefault.png", "data/StateStart/handleMarked.png",{400,2*80}),
+ options("data/StateStart/optionsDefault.png", "data/StateStart/optionsMarked.png",{400,3*80}),
+ exit("data/StateStart/exitDefault.png", "data/StateStart/exitMarked.png",{400,4*80})
 {
 	//setting pointer to the flashcards object
 	this->flashcards = &flashcards;
 	this->window = &window;
-	
-	
-	//setting string paths to the resources
-	button[Start].defaultPath = "data/StateStart/startDefault.png";
-	button[Start].markedPath = "data/StateStart/startMarked.png";
-	button[Handle].defaultPath = "data/StateStart/handleDefault.png";
-	button[Handle].markedPath = "data/StateStart/handleMarked.png";
-	button[Options].defaultPath = "data/StateStart/optionsDefault.png";
-	button[Options].markedPath = "data/StateStart/optionsMarked.png";
-	button[Exit].defaultPath = "data/StateStart/exitDefault.png";
-	button[Exit].markedPath = "data/StateStart/exitMarked.png";
-	
-	//assigning textures to sprites
-	for (int i = 0; i < TOTAL_BUTTONS; ++i)
-	{
-		button[i].t_button.loadFromFile(button[i].defaultPath);
-		button[i].button.setTexture(button[i].t_button);
-		button[i].button.setPosition(200, (i+1) * 80);
-	}
 	
 	leftClick = false;
 	end = false;
@@ -39,10 +24,12 @@ void StateMenu::render()
 {
 	window->startRender();
 	window->draw(background);
-	for (int i = 0; i < TOTAL_BUTTONS; i++)
-	{
-		window->draw(button[i].button);
-	}
+	
+	window->draw(start.getSprite());
+	window->draw(manage.getSprite());
+	window->draw(options.getSprite());
+	window->draw(exit.getSprite());
+	
 	window->finishRender();
 }
 
@@ -65,78 +52,19 @@ bool StateMenu::clickOnButton(sf::Sprite& but)
 	return false;
 }
 
-//function is checking if the button has to be highlighted, handled or extinguished
+//function checks if the button has to be highlighted, handled or extinguished
 void StateMenu::checkButtons(sf::Event event)
 {
-	//for (sf::Sprite x: button) //add &
-		
-	for (int i = 0; i < TOTAL_BUTTONS; i++)
-	{
-		if (mouseOnButton(button[i].button))
-		{
-			highlightButton(i);
-		}
-		
-		if (clickOnButton(button[i].button) && isMouseReleased(event) && mouseOnButton(button[i].button))
-		{
-			handleClick(button[i].button);
-		}
-		
-		if (!mouseOnButton(button[i].button))
-		{
-			undo(i);
-		}
-	}
-}
-
-bool StateMenu::mouseOnButton(sf::Sprite &but)
-{
-	sf::Vector2i mousePos = sf::Mouse::getPosition( *(window->getWindow()) );
-	sf::Vector2f buttonPos = but.getPosition();
-	
-	if (mousePos.x >= buttonPos.x && mousePos.x <= buttonPos.x + 400
-		&& mousePos.y >= buttonPos.y && mousePos.y <= buttonPos.y + 60)
-			return true;
-	
-	return false;
+	start.checkCollision( event, *window->getWindow() );
+	manage.checkCollision( event, *window->getWindow() );
+	options.checkCollision( event, *window->getWindow() );
+	exit.checkCollision( event, *window->getWindow() );
 }
 
 //functions is checking if changing state is needed or if the app has to be closed
 void StateMenu::handleClick(sf::Sprite& but)
 {
-	if (&but == &button[Start].button)
-	{
-		stateStart = true;
-	}
 	
-	else if (&but == &button[Handle].button)
-	{
-		stateHandle = true;
-	}
-	
-	else if (&but == &button[Options].button)
-	{
-		stateOptions = true;
-	}
-	
-	else if (&but == &button[Exit].button)
-	{
-		end = true;
-		window->closeWindow();
-	}
-	stateMenu = false;
-}
-
-void StateMenu::highlightButton(int i)
-{
-	button[i].t_button.loadFromFile(button[i].markedPath);
-	button[i].button.setTexture(button[i].t_button);
-}
-
-void StateMenu::undo(int i)
-{
-	button[i].t_button.loadFromFile(button[i].defaultPath);
-	button[i].button.setTexture(button[i].t_button);
 }
 
 void StateMenu::pollEvent()
@@ -153,14 +81,12 @@ void StateMenu::pollEvent()
 			leftClick = !leftClick;
 		}
 		
-		
-		
 		checkButtons(event);
 		
 		if (event.type == sf::Event::Closed)
 		{
-			end = true;
 			window->closeWindow();
+			end = true;
 		}
 	}
 }

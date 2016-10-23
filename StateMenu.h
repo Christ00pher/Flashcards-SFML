@@ -9,7 +9,10 @@ class StateMenu : public IState
 private:
 	const short TOTAL_BUTTONS;
 	sf::Vector2f buttonSize;
-	Button button[4];
+	Button start;
+	Button manage;
+	Button options;
+	Button exit;
 	void highlightButton(int);
 	void undo(int);
 	sf::Vector2i leftClickPos;

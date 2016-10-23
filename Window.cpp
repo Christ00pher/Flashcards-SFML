@@ -4,7 +4,7 @@ Window::Window()
 :x(800),
  y(600)
 {
-	window.create(sf::VideoMode(x,y), "Fiszki", sf::Style::Close | sf::Style::Titlebar);
+	window.create(sf::VideoMode(x,y), "Flashcards", sf::Style::Close | sf::Style::Titlebar);
 	window.setFramerateLimit(60);
 }
 

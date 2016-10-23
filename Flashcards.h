@@ -26,7 +26,7 @@ public:
 	void saveToFile();
 	void loadFromFile();
 	void ask();
-	void handleAnswer(std::string);
+	bool isCorrect(std::string);
 	void random();
 	void isFull();
 	bool checkAsked(std::map<std::string, std::string>::iterator);

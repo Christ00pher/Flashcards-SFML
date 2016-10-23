@@ -27,6 +27,8 @@
     <File Name="Caption.cpp"/>
     <File Name="StateStart.h"/>
     <File Name="StateStart.cpp"/>
+    <File Name="Button.h"/>
+    <File Name="Button.cpp"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>
