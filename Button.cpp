@@ -17,6 +17,9 @@ Button::Button(std::string def, std::string mark, sf::Vector2f pos)
 	sprite.setOrigin(size.x / 2, size.y / 2);
 	sprite.setPosition(position);
 	marked = false;
+	
+	corner.x = position.x - size.x / 2;
+	corner.y = position.y - size.y / 2;
 }
 
 Button::~Button() {}
@@ -36,12 +39,12 @@ sf::Sprite& Button::getSprite()
 	return sprite;
 }
 
-void Button::checkCollision(sf::Event event, sf::RenderWindow& window)
+void Button::checkCollision(sf::Event event, Window* window)
 {
-	sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+	sf::Vector2i mousePos = sf::Mouse::getPosition( *(window->getWindow()) );
 	
-	if (mousePos.x >= position.x && mousePos.x <= position.x + size.x &&
-		mousePos.y >= position.y && mousePos.y <= position.y + size.y)
+	if (mousePos.x >= corner.x && mousePos.x <= corner.x + size.x &&
+		mousePos.y >= corner.y && mousePos.y <= corner.y + size.y)
 		{
 			if (marked)
 			{

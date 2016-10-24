@@ -1,5 +1,4 @@
 #include "StateMenu.h"
-#include <iostream>
 StateMenu::StateMenu(Flashcards &flashcards, Window &window)
 :TOTAL_BUTTONS(4),
  start("data/StateStart/startDefault.png", "data/StateStart/startMarked.png",{400,80}),
@@ -55,10 +54,10 @@ bool StateMenu::clickOnButton(sf::Sprite& but)
 //function checks if the button has to be highlighted, handled or extinguished
 void StateMenu::checkButtons(sf::Event event)
 {
-	start.checkCollision( event, *window->getWindow() );
-	manage.checkCollision( event, *window->getWindow() );
-	options.checkCollision( event, *window->getWindow() );
-	exit.checkCollision( event, *window->getWindow() );
+	start.checkCollision( event, window );
+	manage.checkCollision( event, window );
+	options.checkCollision( event, window );
+	exit.checkCollision( event, window );
 }
 
 //functions is checking if changing state is needed or if the app has to be closed
@@ -73,12 +72,12 @@ void StateMenu::pollEvent()
 	while (window->getWindow()->pollEvent(event))
 	{
 		if (event.type == sf::Event::MouseButtonReleased)
-			leftClick = !leftClick;
+			leftClick = false;
 			
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !leftClick)
 		{
 			leftClickPos = sf::Mouse::getPosition( *(window->getWindow()) );
-			leftClick = !leftClick;
+			leftClick = true;
 		}
 		
 		checkButtons(event);

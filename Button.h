@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "Window.h"
 
 class Button
 {
@@ -10,7 +11,8 @@ protected:
 	std::string defaultPath;
 	std::string markedPath;
 	bool marked;
-	sf::Vector2f position;
+	sf::Vector2f position; //origin
+	sf::Vector2f corner; //position of up-left corner
 	sf::Vector2u size;
 	
 public:
@@ -19,7 +21,7 @@ public:
 	~Button();
 	void setDefaultPath(std::string);
 	void setMarkedPath(std::string);
-	void checkCollision(sf::Event, sf::RenderWindow&);
+	void checkCollision(sf::Event, Window*);
 	void draw(sf::RenderWindow&);
 	void mark();
 	void remark();
