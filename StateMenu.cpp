@@ -10,7 +10,6 @@ StateMenu::StateMenu(Flashcards &flashcards, Window &window)
 	this->flashcards = &flashcards;
 	this->window = &window;
 	
-	leftClick = false;
 	end = false;
 }
 
@@ -32,23 +31,41 @@ void StateMenu::render()
 	window->finishRender();
 }
 
-bool StateMenu::isMouseReleased(sf::Event event)
+//functions is checking if changing state is needed or if the app has to be closed
+void StateMenu::handleClickExit()
 {
-	if (event.mouseButton.button == sf::Mouse::Left &&
-		event.type == sf::Event::MouseButtonReleased)
-			return true;
-	
-	return false;
+	window->closeWindow();
+	end = true;
 }
 
-bool StateMenu::clickOnButton(sf::Sprite& but)
+void StateMenu::handleClickStart()
 {
-	sf::Vector2f buttonPos = but.getPosition();
-	if (leftClickPos.x >= buttonPos.x && leftClickPos.x <= buttonPos.x + 400
-		&& leftClickPos.y >= buttonPos.y && leftClickPos.y <= buttonPos.y + 60)
-			return true;
-			
-	return false;
+	stateStart = true;
+}
+
+void StateMenu::handleClickManage()
+{
+	stateManage = true;
+}
+
+void StateMenu::handleClickOptions()
+{
+	stateOptions = true;
+}
+
+void StateMenu::pollEvent()
+{
+	sf::Event event;
+	while (window->getWindow()->pollEvent(event))
+	{
+		checkButtons(event);
+		
+		if (event.type == sf::Event::Closed)
+		{
+			window->closeWindow();
+			end = true;
+		}
+	}
 }
 
 //function checks if the button has to be highlighted, handled or extinguished
@@ -58,34 +75,16 @@ void StateMenu::checkButtons(sf::Event event)
 	manage.checkCollision( event, window );
 	options.checkCollision( event, window );
 	exit.checkCollision( event, window );
-}
-
-//functions is checking if changing state is needed or if the app has to be closed
-void StateMenu::handleClick(sf::Sprite& but)
-{
 	
-}
-
-void StateMenu::pollEvent()
-{
-	sf::Event event;
-	while (window->getWindow()->pollEvent(event))
-	{
-		if (event.type == sf::Event::MouseButtonReleased)
-			leftClick = false;
-			
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !leftClick)
-		{
-			leftClickPos = sf::Mouse::getPosition( *(window->getWindow()) );
-			leftClick = true;
-		}
+	if (start.clickOnButton())
+		handleClickStart();
 		
-		checkButtons(event);
+	if (manage.clickOnButton())
+		handleClickManage();
 		
-		if (event.type == sf::Event::Closed)
-		{
-			window->closeWindow();
-			end = true;
-		}
-	}
+	if (options.clickOnButton())
+		handleClickOptions();
+		
+	if (exit.clickOnButton())
+		handleClickExit();
 }

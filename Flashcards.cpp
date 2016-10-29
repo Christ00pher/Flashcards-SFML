@@ -47,23 +47,6 @@ void Flashcards::ask()
 	random();
 }
 
-bool Flashcards::isCorrect(std::string answer)
-{
-	/*
-    if (answer == question.second)
-	{
-		correct_words.insert(question);
-		return true;
-	}
-	
-    else
-	{
-		wrong_words.insert(question);
-		return false;
-	}
-	 * */
-}
-
 void Flashcards::random()
 {
     if (all_words.size() != 0)

@@ -70,7 +70,7 @@ Debug/StateStart.cpp.o: StateStart.cpp StateStart.h \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Glsl.inl \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Sprite.hpp \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Text.hpp IState.h \
- Flashcards.h Window.h TextBox.h Caption.h
+ Flashcards.h Window.h Button.h TextBox.h Caption.h
 
 StateStart.h:
 
@@ -221,6 +221,8 @@ IState.h:
 Flashcards.h:
 
 Window.h:
+
+Button.h:
 
 TextBox.h:
 

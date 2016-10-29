@@ -10,6 +10,7 @@ int main()
 {
 	Flashcards flashcards;
 	Window window;
+	
 	IState* state = new StateMenu(flashcards,window);
 	
 	while(!state->toExit())
@@ -23,7 +24,7 @@ int main()
 		else if (state->getStateOptions())
 			state = new StateOptions(flashcards,window);
 			
-		else if (state->getStateHandle())
+		else if (state->getStateManage())
 			state = new StateManage(flashcards,window);
 		
 		else if (state->getStateStart())

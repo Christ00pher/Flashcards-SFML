@@ -39,7 +39,7 @@ void StateOptions::pollEvent()
 		{
 			if (event.mouseButton.button == sf::Mouse::Left)
 			{
-				stateMenu = true;
+				//stateMenu = true;
 			}
 		}
 	}

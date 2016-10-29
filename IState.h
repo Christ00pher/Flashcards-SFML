@@ -12,7 +12,7 @@ protected:
 	bool end;
 	bool stateMenu;
 	bool stateStart;
-	bool stateHandle;
+	bool stateManage;
 	bool stateOptions;
 	sf::Texture t_background;
 	sf::Sprite background;
@@ -25,7 +25,7 @@ public:
 	bool toReturn(sf::Event);
 	bool toExit();
 	bool getStateMenu();
-	bool getStateHandle();
+	bool getStateManage();
 	bool getStateOptions();
 	bool getStateStart();
 	bool isActive();

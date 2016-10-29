@@ -16,7 +16,9 @@ Button::Button(std::string def, std::string mark, sf::Vector2f pos)
 	
 	sprite.setOrigin(size.x / 2, size.y / 2);
 	sprite.setPosition(position);
+	
 	marked = false;
+	leftClick = false;
 	
 	corner.x = position.x - size.x / 2;
 	corner.y = position.y - size.y / 2;
@@ -41,6 +43,15 @@ sf::Sprite& Button::getSprite()
 
 void Button::checkCollision(sf::Event event, Window* window)
 {
+	if (event.type == sf::Event::MouseButtonReleased)
+		leftClick = false;
+		
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !leftClick)
+	{
+		leftClickPos = sf::Mouse::getPosition( *(window->getWindow()) );
+		leftClick = true;
+	}
+		
 	sf::Vector2i mousePos = sf::Mouse::getPosition( *(window->getWindow()) );
 	
 	if (mousePos.x >= corner.x && mousePos.x <= corner.x + size.x &&
@@ -73,4 +84,22 @@ void Button::setMarkedPath(std::string marked)
 void Button::draw(sf::RenderWindow& window)
 {
 	window.draw(sprite);
+}
+
+bool Button::isMouseReleased(sf::Event event)
+{
+	if (event.mouseButton.button == sf::Mouse::Left &&
+		event.type == sf::Event::MouseButtonReleased)
+			return true;
+	
+	return false;
+}
+
+bool Button::clickOnButton()
+{
+	if (leftClickPos.x >= corner.x && leftClickPos.x <= corner.x + size.x
+		&& leftClickPos.y >= corner.y && leftClickPos.y <= corner.y + size.y)
+			return true;
+			
+	return false;
 }

@@ -14,6 +14,8 @@ protected:
 	sf::Vector2f position; //origin
 	sf::Vector2f corner; //position of up-left corner
 	sf::Vector2u size;
+	sf::Vector2i leftClickPos;
+	bool leftClick;
 	
 public:
 	Button();
@@ -21,6 +23,8 @@ public:
 	~Button();
 	void setDefaultPath(std::string);
 	void setMarkedPath(std::string);
+	bool isMouseReleased(sf::Event);
+	bool clickOnButton();
 	void checkCollision(sf::Event, Window*);
 	void draw(sf::RenderWindow&);
 	void mark();
