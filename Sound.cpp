@@ -20,7 +20,7 @@ Sound::Sound()
 	std::cout << "Sound initialized" << std::endl;
 }
 
-void Sound::startButtonSound()
+void Sound::playButtonSound()
 {
 	sound.play();
 }
@@ -30,7 +30,7 @@ void Sound::stopButtonSound()
 	sound.stop();
 }
 
-void Sound::startSoundtrack()
+void Sound::playSoundtrack()
 {
 	soundtrack.play();
 }

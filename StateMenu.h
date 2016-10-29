@@ -13,6 +13,7 @@ private:
 	Button manage;
 	Button options;
 	Button exit;
+	Button speaker;
 	sf::String string;
 public:
 	StateMenu();
@@ -26,4 +27,5 @@ public:
 	void handleClickManage();
 	void handleClickOptions();
 	void handleClickExit();
+	void handleClickSpeaker();
 };

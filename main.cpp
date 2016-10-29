@@ -8,7 +8,7 @@
 
 int main()
 {
-	Sound::instance().startSoundtrack();
+	Sound::instance().playSoundtrack();
 	
 	IState* state = new StateMenu();
 	

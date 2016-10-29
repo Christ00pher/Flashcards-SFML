@@ -24,9 +24,11 @@ public:
 	~Button();
 	void setDefaultPath(std::string);
 	void setMarkedPath(std::string);
+	bool isMarked();
 	bool isMouseReleased(sf::Event);
 	bool clickOnButton();
 	void checkCollision(sf::Event);
+	void getInput(sf::Event);
 	void draw();
 	void mark();
 	void remark();

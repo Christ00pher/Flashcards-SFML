@@ -20,9 +20,9 @@ public:
 	}
 	
 	~Sound() {};
-	void startButtonSound();
+	void playButtonSound();
 	void stopButtonSound();
-	void startSoundtrack();
+	void playSoundtrack();
 	void pauseSoundtrack();
 	void stopSoundtrack();
 };

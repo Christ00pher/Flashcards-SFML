@@ -30,11 +30,13 @@ Button::~Button() {}
 void Button::mark()
 {
 	sprite.setTexture(markedTexture);
+	marked = true;
 }
 
 void Button::remark()
 {
 	sprite.setTexture(defaultTexture);
+	marked = false;
 }
 
 sf::Sprite& Button::getSprite()
@@ -44,15 +46,8 @@ sf::Sprite& Button::getSprite()
 
 void Button::checkCollision(sf::Event event)
 {
-	if (event.type == sf::Event::MouseButtonReleased)
-		leftClick = false;
-		
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !leftClick)
-	{
-		leftClickPos = sf::Mouse::getPosition( *(Window::instance().getWindow()) );
-		leftClick = true;
-	}
-		
+	getInput(event);
+	
 	sf::Vector2i mousePos = sf::Mouse::getPosition( *(Window::instance().getWindow()) );
 	
 	if (mousePos.x >= corner.x && mousePos.x <= corner.x + size.x &&
@@ -61,14 +56,12 @@ void Button::checkCollision(sf::Event event)
 			if (marked)
 			{
 				remark();
-				marked = false;
 			}
 		}
 	
 	else
 	{
 		mark();
-		marked = true;
 	}
 }
 
@@ -98,9 +91,27 @@ bool Button::isMouseReleased(sf::Event event)
 
 bool Button::clickOnButton()
 {
-	if (leftClickPos.x >= corner.x && leftClickPos.x <= corner.x + size.x
-		&& leftClickPos.y >= corner.y && leftClickPos.y <= corner.y + size.y)
+	
+		if (leftClickPos.x >= corner.x && leftClickPos.x <= corner.x + size.x
+			&& leftClickPos.y >= corner.y && leftClickPos.y <= corner.y + size.y)
 			return true;
 			
 	return false;
+}
+
+bool Button::isMarked()
+{
+	return marked;
+}
+
+void Button::getInput(sf::Event event)
+{
+	if (event.type == sf::Event::MouseButtonReleased)
+		leftClick = false;
+		
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !leftClick)
+	{
+		leftClickPos = sf::Mouse::getPosition( *(Window::instance().getWindow()) );
+		leftClick = true;
+	}
 }
