@@ -1,13 +1,12 @@
 #include "StateStart.h"
 #include <iostream>
 
-StateStart::StateStart(Flashcards& flashcards)
+StateStart::StateStart()
 :tbPolish(Window::instance().getX() / 4, Window::instance().getY() / 3),
  tbEnglish(3 * Window::instance().getX() / 4, Window::instance().getY() / 3),
  cPolish("Polish word", Window::instance().getX() / 4, Window::instance().getY() / 4),
- cEnglish("Polish word", 3 * Window::instance().getX() / 4, Window::instance().getY() / 4)
+ cEnglish("English translation", 3 * Window::instance().getX() / 4, Window::instance().getY() / 4)
 {
-	this->flashcards = &flashcards;
 	tbEnglish.mark();
 	newQuestion = true;
 }
@@ -62,8 +61,8 @@ void StateStart::update()
 {
 	if (newQuestion)
 	{
-		flashcards->ask();
-		tbPolish.setString( flashcards->getQuestion() );
+		Flashcards::instance().ask();
+		tbPolish.setString( Flashcards::instance().getQuestion() );
 		newQuestion = false;
 	}
 	pollEvent();
@@ -71,7 +70,7 @@ void StateStart::update()
 
 bool StateStart::isCorrect()
 {
-	if (tbEnglish.getString() == flashcards->getAnswer())
+	if (tbEnglish.getString() == Flashcards::instance().getAnswer())
 		return true;
 	
 	return false;

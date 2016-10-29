@@ -7,7 +7,7 @@ class StateOptions : public IState
 private:
 	Caption credits;
 public:
-	StateOptions(Flashcards&);
+	StateOptions();
 	~StateOptions() {};
 	virtual void update();
 	virtual void render();

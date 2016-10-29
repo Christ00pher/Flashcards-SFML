@@ -7,7 +7,6 @@
 class IState
 {
 protected:
-	Flashcards *flashcards;
 	bool end;
 	bool stateMenu;
 	bool stateStart;

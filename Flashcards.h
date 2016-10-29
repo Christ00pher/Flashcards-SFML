@@ -10,6 +10,8 @@
 class Flashcards
 {
 private:
+	Flashcards();
+	
     std::map<std::string, std::string> all_words; //contains all words
     std::map<std::string, std::string> correct_words; //contains correct answers
     std::map<std::string, std::string> wrong_words; //contains wrong answers
@@ -17,7 +19,12 @@ private:
 	std::string answer; //english word
 	std::string question; //polish word
 public:
-	Flashcards();
+	static Flashcards & instance()
+	{
+		static Flashcards a;
+		return a;
+	}
+	
 	~Flashcards();
 	std::string getAnswer();
 	std::string getQuestion();

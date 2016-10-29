@@ -6,28 +6,26 @@
 #include "StateManage.h"
 #include "StateStart.h"
 
-Flashcards flashcards;
-
 int main()
 {
-	IState* state = new StateMenu(flashcards);
+	IState* state = new StateMenu();
 	
 	while(!state->toExit())
 	{
 		state->update();
 		state->render();
 		
-		if (state->getStateMenu()) 
-			state = new StateMenu(flashcards);
+		if ( state->getStateMenu() ) 
+			state = new StateMenu();
 		
-		else if (state->getStateOptions())
-			state = new StateOptions(flashcards);
+		else if ( state->getStateOptions() )
+			state = new StateOptions();
 			
-		else if (state->getStateManage())
-			state = new StateManage(flashcards);
+		else if ( state->getStateManage() )
+			state = new StateManage();
 		
-		else if (state->getStateStart())
-			state = new StateStart(flashcards);
+		else if ( state->getStateStart() )
+			state = new StateStart();
 	}
 	return 0;
 }

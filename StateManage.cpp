@@ -1,12 +1,11 @@
 #include "StateManage.h"
 
-StateManage::StateManage(Flashcards& flashcards)
+StateManage::StateManage()
 :tbEnglish(Window::instance().getX() / 4, 50),
  tbPolish(3 * Window::instance().getX() / 4, 50),
  c1("English word", Window::instance().getX() / 4, 20),
  c2("Polish word", 3 * Window::instance().getX() / 4, 20)
 {
-	this->flashcards = &flashcards;
 	c1.setSize(25);
 	c2.setSize(25);
 	click = false;
@@ -103,7 +102,7 @@ void StateManage::handleInput(sf::Event event)
 			{
 				if ( isCorrect() )
 				{
-					flashcards->add( tbPolish.getString(), tbEnglish.getString() );
+					Flashcards::instance().add( tbPolish.getString(), tbEnglish.getString() );
 					tbPolish.clear();
 					tbEnglish.clear();
 					remark();

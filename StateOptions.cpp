@@ -1,10 +1,9 @@
 #include "StateOptions.h"
 
-StateOptions::StateOptions(Flashcards& flashcards)
-:credits()
+StateOptions::StateOptions()
+:credits("App written by Chris")
 {
 	//credits.setSize(100);
-	this->flashcards = &flashcards;
 	credits.setPosition( Window::instance().getX()/2, Window::instance().getY()/2);
 }
 

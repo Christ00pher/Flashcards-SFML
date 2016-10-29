@@ -1,12 +1,11 @@
 #include "StateMenu.h"
-StateMenu::StateMenu(Flashcards &flashcards)
+StateMenu::StateMenu()
 :TOTAL_BUTTONS(4),
  start("data/StateStart/startDefault.png", "data/StateStart/startMarked.png",{400,80}),
  manage("data/StateStart/handleDefault.png", "data/StateStart/handleMarked.png",{400,2*80}),
  options("data/StateStart/optionsDefault.png", "data/StateStart/optionsMarked.png",{400,3*80}),
  exit("data/StateStart/exitDefault.png", "data/StateStart/exitMarked.png",{400,4*80})
 {
-	this->flashcards = &flashcards;
 	end = false;
 }
 
