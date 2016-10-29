@@ -6,8 +6,8 @@ StateManage::StateManage()
  c1("English word", Window::instance().getX() / 4, 20),
  c2("Polish word", 3 * Window::instance().getX() / 4, 20)
 {
-	c1.setSize(25);
-	c2.setSize(25);
+	c1.setSize(30);
+	c2.setSize(30);
 	click = false;
 	tbEnglish.mark();
 }

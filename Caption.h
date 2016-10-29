@@ -18,7 +18,7 @@ private:
 public:
 	Caption();
 	~Caption();
-	Caption(std::string,float = 0,float = 0,std::string s = "data/StateOptions/Capture_it.ttf");
+	Caption(std::string,float = 0,float = 0,std::string s = "data/General/font1.ttf");
 	sf::Text& getText();
 	sf::String& getString();
 	void add(sf::Event);
