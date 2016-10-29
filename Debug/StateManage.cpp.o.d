@@ -70,7 +70,7 @@ Debug/StateManage.cpp.o: StateManage.cpp StateManage.h IState.h \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Glsl.inl \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Sprite.hpp \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Text.hpp Window.h \
- TextBox.h Caption.h
+ Button.h TextBox.h Caption.h
 
 StateManage.h:
 
@@ -221,6 +221,8 @@ Flashcards.h:
 /home/chris/dev/sfml/SFML/include/SFML/Graphics/Text.hpp:
 
 Window.h:
+
+Button.h:
 
 TextBox.h:
 

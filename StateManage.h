@@ -10,6 +10,7 @@ private:
 	TextBox tbPolish;
 	bool isTbPolish;
 	bool isTbEnglish;
+	bool click;
 	Caption c1,c2;
 	
 	void mark(sf::Event);

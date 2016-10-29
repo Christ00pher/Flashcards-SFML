@@ -22,20 +22,26 @@ void StateStart::pollEvent()
 	{
 		if (toReturn(event))
 			break;
-			
-		if (event.text.unicode == enter)
+		
+		if (event.type == sf::Event::TextEntered)
 		{
-			if ( isCorrect() )
+			if (event.text.unicode < 128)
 			{
-				std::cout << "Correct!" << std::endl;
+				if (event.text.unicode == enter)
+				{
+					if ( isCorrect() )
+					{
+						std::cout << "Correct!" << std::endl;
+					}
+					else
+					{
+						std::cout << "Bad!" << std::endl;
+					}
+					
+					newQuestion = true;
+					tbEnglish.clear();
+				}
 			}
-			else
-			{
-				std::cout << "Bad!" << std::endl;
-			}
-			
-			newQuestion = true;
-			tbEnglish.clear();
 		}
 		
 		tbEnglish.getInput(event);

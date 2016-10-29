@@ -10,6 +10,8 @@ StateManage::StateManage(Flashcards& flashcards, Window& window)
 	this->flashcards = &flashcards;
 	c1.setSize(25);
 	c2.setSize(25);
+	click = false;
+	tbEnglish.mark();
 }
 
 StateManage::~StateManage() {}
@@ -80,11 +82,14 @@ void StateManage::mark(sf::Event event)
 				tbEnglish.remark();
 			}
 			
-			else
+			else if (click &&
+					!tbPolish.mouseOnTextbox(mousePos) &&
+					!tbEnglish.mouseOnTextbox(mousePos))
 			{
 				tbPolish.remark();
 				tbEnglish.remark();
 			}
+			click = true;
 		}
 	}
 }
