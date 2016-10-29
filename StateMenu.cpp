@@ -30,22 +30,26 @@ void StateMenu::render()
 //functions is checking if changing state is needed or if the app has to be closed
 void StateMenu::handleClickExit()
 {
+	Sound::instance().startButtonSound();
 	Window::instance().closeWindow();
 	end = true;
 }
 
 void StateMenu::handleClickStart()
 {
+	Sound::instance().startButtonSound();
 	stateStart = true;
 }
 
 void StateMenu::handleClickManage()
 {
+	Sound::instance().startButtonSound();
 	stateManage = true;
 }
 
 void StateMenu::handleClickOptions()
 {
+	Sound::instance().startButtonSound();
 	stateOptions = true;
 }
 

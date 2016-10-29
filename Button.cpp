@@ -19,6 +19,7 @@ Button::Button(std::string def, std::string mark, sf::Vector2f pos)
 	
 	marked = false;
 	leftClick = false;
+	activated = false;
 	
 	corner.x = position.x - size.x / 2;
 	corner.y = position.y - size.y / 2;

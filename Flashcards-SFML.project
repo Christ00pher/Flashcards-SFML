@@ -29,6 +29,8 @@
     <File Name="StateStart.cpp"/>
     <File Name="Button.h"/>
     <File Name="Button.cpp"/>
+    <File Name="Sound.cpp"/>
+    <File Name="Sound.h"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>

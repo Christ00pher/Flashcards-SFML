@@ -16,6 +16,7 @@ protected:
 	sf::Vector2u size;
 	sf::Vector2i leftClickPos;
 	bool leftClick;
+	bool activated;
 	
 public:
 	Button();

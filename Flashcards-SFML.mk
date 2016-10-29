@@ -61,7 +61,7 @@ AS       := /usr/bin/as
 ##
 CodeLiteDir:=/usr/share/codelite
 Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/Window.cpp$(ObjectSuffix) $(IntermediateDirectory)/Flashcards.cpp$(ObjectSuffix) $(IntermediateDirectory)/IState.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateMenu.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateOptions.cpp$(ObjectSuffix) $(IntermediateDirectory)/TextBox.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateManage.cpp$(ObjectSuffix) $(IntermediateDirectory)/Caption.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateStart.cpp$(ObjectSuffix) \
-	$(IntermediateDirectory)/Button.cpp$(ObjectSuffix) 
+	$(IntermediateDirectory)/Button.cpp$(ObjectSuffix) $(IntermediateDirectory)/Sound.cpp$(ObjectSuffix) 
 
 
 
@@ -179,6 +179,14 @@ $(IntermediateDirectory)/Button.cpp$(DependSuffix): Button.cpp
 
 $(IntermediateDirectory)/Button.cpp$(PreprocessSuffix): Button.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Button.cpp$(PreprocessSuffix)Button.cpp
+
+$(IntermediateDirectory)/Sound.cpp$(ObjectSuffix): Sound.cpp $(IntermediateDirectory)/Sound.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/chris/CodeLiteProjects/Flashcards-SFML/Sound.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Sound.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/Sound.cpp$(DependSuffix): Sound.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Sound.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Sound.cpp$(DependSuffix) -MM Sound.cpp
+
+$(IntermediateDirectory)/Sound.cpp$(PreprocessSuffix): Sound.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Sound.cpp$(PreprocessSuffix)Sound.cpp
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

@@ -8,6 +8,8 @@
 
 int main()
 {
+	Sound::instance().startSoundtrack();
+	
 	IState* state = new StateMenu();
 	
 	while(!state->toExit())

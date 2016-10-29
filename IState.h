@@ -2,6 +2,7 @@
 #include "Flashcards.h"
 #include "Window.h"
 #include "Button.h"
+#include "Sound.h"
 #include <SFML/Graphics.hpp>
 
 class IState
