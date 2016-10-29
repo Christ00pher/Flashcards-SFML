@@ -6,12 +6,11 @@
 #include "StateManage.h"
 #include "StateStart.h"
 
+Flashcards flashcards;
+
 int main()
 {
-	Flashcards flashcards;
-	Window window;
-	
-	IState* state = new StateMenu(flashcards,window);
+	IState* state = new StateMenu(flashcards);
 	
 	while(!state->toExit())
 	{
@@ -19,16 +18,16 @@ int main()
 		state->render();
 		
 		if (state->getStateMenu()) 
-			state = new StateMenu(flashcards,window);
+			state = new StateMenu(flashcards);
 		
 		else if (state->getStateOptions())
-			state = new StateOptions(flashcards,window);
+			state = new StateOptions(flashcards);
 			
 		else if (state->getStateManage())
-			state = new StateManage(flashcards,window);
+			state = new StateManage(flashcards);
 		
 		else if (state->getStateStart())
-			state = new StateStart(flashcards,window);
+			state = new StateStart(flashcards);
 	}
 	return 0;
 }

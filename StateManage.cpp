@@ -1,12 +1,11 @@
 #include "StateManage.h"
 
-StateManage::StateManage(Flashcards& flashcards, Window& window)
-:tbEnglish(window,window.getX() / 4, 50),
- tbPolish(window,3 * window.getX() / 4, 50),
- c1("English word", window.getX() / 4, 20),
- c2("Polish word", 3 * window.getX() / 4, 20)
+StateManage::StateManage(Flashcards& flashcards)
+:tbEnglish(Window::instance().getX() / 4, 50),
+ tbPolish(3 * Window::instance().getX() / 4, 50),
+ c1("English word", Window::instance().getX() / 4, 20),
+ c2("Polish word", 3 * Window::instance().getX() / 4, 20)
 {
-	this->window = &window;
 	this->flashcards = &flashcards;
 	c1.setSize(25);
 	c2.setSize(25);
@@ -23,20 +22,20 @@ void StateManage::update()
 
 void StateManage::render()
 {
-	window->startRender();
-	window->draw(background);
+	Window::instance().startRender();
+	Window::instance().draw(background);
 	tbEnglish.draw();
 	tbPolish.draw();
 	
-	window->draw( c2.getText() );
-	window->draw( c1.getText() );
-	window->finishRender();
+	Window::instance().draw( c2.getText() );
+	Window::instance().draw( c1.getText() );
+	Window::instance().finishRender();
 }
 
 void StateManage::pollEvent()
 {
 	sf::Event event;
-	while ( window->getWindow()->pollEvent(event) )
+	while ( Window::instance().getWindow()->pollEvent(event) )
 	{
 		if ( toReturn(event) )
 			break;
@@ -50,7 +49,7 @@ void StateManage::pollEvent()
 bool StateManage::toReturn(sf::Event event)
 {
 	if (event.type == sf::Event::Closed)
-			window->closeWindow();
+			Window::instance().closeWindow();
 			
 	if (event.type == sf::Event::KeyPressed)
 	{
@@ -68,7 +67,7 @@ void StateManage::mark(sf::Event event)
 		if (event.mouseButton.button == sf::Mouse::Left)
 		{
 			//getting up-left corner of textbox
-			sf::Vector2i mousePos = sf::Mouse::getPosition( *(window->getWindow()) );
+			sf::Vector2i mousePos = sf::Mouse::getPosition( *(Window::instance().getWindow()) );
 			
 			if (tbEnglish.mouseOnTextbox(mousePos))
 			{

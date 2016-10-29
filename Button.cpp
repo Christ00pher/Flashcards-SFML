@@ -41,18 +41,18 @@ sf::Sprite& Button::getSprite()
 	return sprite;
 }
 
-void Button::checkCollision(sf::Event event, Window* window)
+void Button::checkCollision(sf::Event event)
 {
 	if (event.type == sf::Event::MouseButtonReleased)
 		leftClick = false;
 		
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !leftClick)
 	{
-		leftClickPos = sf::Mouse::getPosition( *(window->getWindow()) );
+		leftClickPos = sf::Mouse::getPosition( *(Window::instance().getWindow()) );
 		leftClick = true;
 	}
 		
-	sf::Vector2i mousePos = sf::Mouse::getPosition( *(window->getWindow()) );
+	sf::Vector2i mousePos = sf::Mouse::getPosition( *(Window::instance().getWindow()) );
 	
 	if (mousePos.x >= corner.x && mousePos.x <= corner.x + size.x &&
 		mousePos.y >= corner.y && mousePos.y <= corner.y + size.y)
@@ -81,9 +81,9 @@ void Button::setMarkedPath(std::string marked)
 	markedPath = marked;
 }
 
-void Button::draw(sf::RenderWindow& window)
+void Button::draw()
 {
-	window.draw(sprite);
+	Window::instance().draw(sprite);
 }
 
 bool Button::isMouseReleased(sf::Event event)

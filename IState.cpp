@@ -15,10 +15,10 @@ IState::IState()
 void IState::pollEvent()
 {
 	sf::Event event;
-	while (window->getWindow()->pollEvent(event))
+	while (Window::instance().getWindow()->pollEvent(event))
 	{
 		if (event.type == sf::Event::Closed)
-			window->closeWindow();
+			Window::instance().closeWindow();
 	}
 }
 
@@ -34,7 +34,7 @@ bool IState::getStateStart() { return stateStart; }
 bool IState::toReturn(sf::Event event)
 {
 	if (event.type == sf::Event::Closed)
-			window->closeWindow();
+			Window::instance().closeWindow();
 			
 	if (event.type == sf::Event::KeyPressed)
 	{

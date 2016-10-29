@@ -14,7 +14,7 @@ private:
 	Caption mistake;
 	bool newQuestion;
 public:
-	StateStart(Flashcards&,Window&);
+	StateStart(Flashcards&);
 	~StateStart();
 	virtual void update();
 	virtual void render();

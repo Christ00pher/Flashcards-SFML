@@ -15,7 +15,8 @@ private:
 	Button exit;
 	sf::String string;
 public:
-	StateMenu(Flashcards &flashcards, Window &window);
+	StateMenu();
+	StateMenu(Flashcards &flashcards);
 	~StateMenu() {};
 	virtual void update();
 	virtual void render();

@@ -20,6 +20,6 @@ void Window::startRender() { window.clear(); }
 
 void Window::finishRender() { window.display(); }
 
-int Window::getX() { return x; }
+float Window::getX() { return x; }
 
-int Window::getY() { return y; }
+float Window::getY() { return y; }

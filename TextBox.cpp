@@ -2,11 +2,9 @@
 
 TextBox::TextBox() {}
 
-TextBox::TextBox(Window &p_window, float x, float y)
+TextBox::TextBox(float x, float y)
 :text("", x, y)
 {
-	window = &p_window;
-	
 	position = {x, y};
 	size = {300, 30};
 	
@@ -24,8 +22,8 @@ TextBox::~TextBox() {}
 
 void TextBox::draw()
 {
-	window->draw(textbox);
-	window->draw(text.getText());
+	Window::instance().draw(textbox);
+	Window::instance().draw(text.getText());
 }
 
 sf::Vector2f TextBox::getPosition()

@@ -19,7 +19,7 @@ private:
 	void remark();
 	bool isCorrect();
 public:
-	StateManage(Flashcards&,Window&);
+	StateManage(Flashcards&);
 	~StateManage();
 	virtual void update();
 	virtual void render();

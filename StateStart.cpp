@@ -1,13 +1,12 @@
 #include "StateStart.h"
 #include <iostream>
 
-StateStart::StateStart(Flashcards& flashcards, Window& window)
-:tbPolish(window, window.getX() / 4, window.getY() / 3),
- tbEnglish(window, 3 * window.getX() / 4, window.getY() / 3),
- cPolish("Polish word", window.getX() / 4, window.getY() / 4),
- cEnglish("English translation", 3 * window.getX() / 4, window.getY() / 4)
+StateStart::StateStart(Flashcards& flashcards)
+:tbPolish(Window::instance().getX() / 4, Window::instance().getY() / 3),
+ tbEnglish(3 * Window::instance().getX() / 4, Window::instance().getY() / 3),
+ cPolish("Polish word", Window::instance().getX() / 4, Window::instance().getY() / 4),
+ cEnglish("Polish word", 3 * Window::instance().getX() / 4, Window::instance().getY() / 4)
 {
-	this->window = &window;
 	this->flashcards = &flashcards;
 	tbEnglish.mark();
 	newQuestion = true;
@@ -18,7 +17,7 @@ StateStart::~StateStart() {}
 void StateStart::pollEvent()
 {
 	sf::Event event;
-	while (window->getWindow()->pollEvent(event))
+	while (Window::instance().getWindow()->pollEvent(event))
 	{
 		if (toReturn(event))
 			break;
@@ -50,13 +49,13 @@ void StateStart::pollEvent()
 
 void StateStart::render()
 {
-	window->startRender();
-	window->draw(background);
-	window->draw(cPolish.getText());
-	window->draw(cEnglish.getText());
+	Window::instance().startRender();
+	Window::instance().draw(background);
+	Window::instance().draw(cPolish.getText());
+	Window::instance().draw(cEnglish.getText());
 	tbPolish.draw();
 	tbEnglish.draw();
-	window->finishRender();
+	Window::instance().finishRender();
 }
 
 void StateStart::update()

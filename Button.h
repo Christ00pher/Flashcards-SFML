@@ -25,8 +25,8 @@ public:
 	void setMarkedPath(std::string);
 	bool isMouseReleased(sf::Event);
 	bool clickOnButton();
-	void checkCollision(sf::Event, Window*);
-	void draw(sf::RenderWindow&);
+	void checkCollision(sf::Event);
+	void draw();
 	void mark();
 	void remark();
 	sf::Sprite& getSprite();

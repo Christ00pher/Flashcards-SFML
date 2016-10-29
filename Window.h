@@ -1,21 +1,29 @@
 #pragma once
-
 #include <SFML/Graphics.hpp>
+
+//Singleton class
 
 class Window
 {
 private:
-	sf::RenderWindow window;
-	int x;
-	int y;
-public:
 	Window();
+	
+	sf::RenderWindow window;
+	float x;
+	float y;
+public:
+	static Window & instance()
+	{
+		static Window a;
+		return a;
+	}
+	
 	~Window();
 	sf::RenderWindow* getWindow();
 	void closeWindow();
 	void startRender();
 	void finishRender();
 	void draw(sf::Drawable&);
-	int getX();
-	int getY();
+	float getX();
+	float getY();
 };

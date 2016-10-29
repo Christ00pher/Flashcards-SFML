@@ -1,12 +1,11 @@
 #include "StateOptions.h"
 
-StateOptions::StateOptions(Flashcards& flashcards, Window &window)
+StateOptions::StateOptions(Flashcards& flashcards)
 :credits()
 {
 	//credits.setSize(100);
-	credits.setPosition( window.getX()/2, window.getY()/2);
 	this->flashcards = &flashcards;
-	this->window = &window;
+	credits.setPosition( Window::instance().getX()/2, Window::instance().getY()/2);
 }
 
 void StateOptions::update()
@@ -16,19 +15,19 @@ void StateOptions::update()
 
 void StateOptions::render()
 {
-	window->startRender();
-	window->draw(background);
-	window->draw(credits.getText());
-	window->finishRender();
+	Window::instance().startRender();
+	Window::instance().draw(background);
+	Window::instance().draw(credits.getText());
+	Window::instance().finishRender();
 }
 
 void StateOptions::pollEvent()
 {
 	sf::Event event;
-	while (window->getWindow()->pollEvent(event))
+	while (Window::instance().getWindow()->pollEvent(event))
 	{
 		if (event.type == sf::Event::Closed)
-			window->closeWindow();
+			Window::instance().closeWindow();
 		if (event.type == sf::Event::KeyPressed)
 		{
 			if (event.key.code == sf::Keyboard::Escape)
