@@ -8,6 +8,9 @@ StateMenu::StateMenu()
  speaker("data/General/speakerOn.png", "data/General/speakerOff.png",{730,70})
 {
 	end = false;
+	
+	if (!Sound::instance().isPlaying())
+		speaker.mark();
 }
 
 void StateMenu::update()

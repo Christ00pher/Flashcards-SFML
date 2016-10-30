@@ -14,6 +14,7 @@ Sound::Sound()
 	buffer.loadFromFile(soundPath);
 	sound.setBuffer(buffer);
 	sound.setLoop(false);
+	playing = false;
 	
 	soundtrack.play();
 	
@@ -33,14 +34,22 @@ void Sound::stopButtonSound()
 void Sound::playSoundtrack()
 {
 	soundtrack.play();
+	playing = true;
 }
 
 void Sound::pauseSoundtrack()
 {
 	soundtrack.pause();
+	playing = false;
 }
 
 void Sound::stopSoundtrack()
 {
 	soundtrack.stop();
+	playing = false;
+}
+
+bool Sound::isPlaying()
+{
+	return playing;
 }

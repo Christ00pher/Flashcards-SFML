@@ -10,6 +10,7 @@ private:
 	
 	std::string soundtrackPath;
 	std::string soundPath;
+	bool playing;
 	
 	Sound();
 public:
@@ -25,4 +26,5 @@ public:
 	void playSoundtrack();
 	void pauseSoundtrack();
 	void stopSoundtrack();
+	bool isPlaying();
 };
