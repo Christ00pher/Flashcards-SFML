@@ -107,7 +107,7 @@ void StateMenu::handleClickSpeaker()
 	Sound::instance().playButtonSound();
 	if ( !speaker.isMarked() )
 	{
-		Sound::instance().pauseSoundtrack();
+		Sound::instance().muteSoundtrack();
 		speaker.mark();
 	}
 	

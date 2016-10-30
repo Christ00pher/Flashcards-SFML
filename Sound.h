@@ -10,7 +10,9 @@ private:
 	
 	std::string soundtrackPath;
 	std::string soundPath;
-	bool playing;
+	bool playing; //true if the sound is playing ( or volume level > 0 )
+	int soundtrackVol; //soundtrack volume level
+	int soundVol; //sound volume level
 	
 	Sound();
 public:
@@ -26,5 +28,6 @@ public:
 	void playSoundtrack();
 	void pauseSoundtrack();
 	void stopSoundtrack();
+	void muteSoundtrack();
 	bool isPlaying();
 };

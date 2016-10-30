@@ -1,5 +1,4 @@
 #include "IState.h"
-#include <iostream>
 
 IState::IState()
 {
