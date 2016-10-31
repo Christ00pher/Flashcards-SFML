@@ -116,8 +116,4 @@ void Caption::setPosition(sf::Vector2f pos)
 {
 	position = pos;
 	text.setPosition(position);
-	
-	std::cout << (std::string)string << std::endl;
-	std::cout << "Pos.x = " << text.getPosition().x << std::endl;
-	std::cout << "Pos.y = " << text.getPosition().y << std::endl;
 }

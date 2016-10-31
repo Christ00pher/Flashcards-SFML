@@ -14,11 +14,11 @@ enum keys
 class TextBox
 {
 private:
-	sf::RectangleShape textbox;
+	//sf::RectangleShape textbox;
 	sf::Texture texture;
 	sf::Sprite sprite;
 	sf::Vector2f position;
-	sf::Vector2f size;
+	sf::Vector2u size;
 	bool marked;
 	sf::Vector2f textPosition;
 	Caption text;
@@ -36,7 +36,7 @@ public:
 	void setString(std::string);
 	sf::Vector2f getPosition();
 	sf::Vector2f getTextPosition();
-	sf::Vector2f getSize();
+	sf::Vector2u getSize();
 	bool mouseOnTextbox(sf::Vector2i);
 	void getInput(sf::Event);
 	bool unwantedKeys(sf::Event);

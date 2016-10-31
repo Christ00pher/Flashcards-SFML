@@ -1,8 +1,8 @@
 #include "StateManage.h"
 
 StateManage::StateManage()
-:tbEnglish(Window::instance().getX() / 4, 50),
- tbPolish(3 * Window::instance().getX() / 4, 50),
+:tbEnglish(Window::instance().getX() / 4, 150),
+ tbPolish(3 * Window::instance().getX() / 4, 150),
  c1("English word", Window::instance().getX() / 4, 20),
  c2("Polish word", 3 * Window::instance().getX() / 4, 20)
 {

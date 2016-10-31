@@ -30,15 +30,7 @@ void StateStart::pollEvent()
 			{
 				if (event.text.unicode == enter)
 				{
-					if ( isCorrect() )
-					{
-						std::cout << "Correct!" << std::endl;
-					}
-					else
-					{
-						std::cout << "Bad!" << std::endl;
-					}
-					
+					handleAnswer();
 					newQuestion = true;
 					tbEnglish.clear();
 				}
@@ -83,4 +75,16 @@ bool StateStart::isCorrect()
 		return true;
 	
 	return false;
+}
+
+void StateStart::handleAnswer()
+{
+	if ( isCorrect() )
+	{
+		std::cout << "Correct!" << std::endl;
+	}
+	else
+	{
+		std::cout << "Bad!" << std::endl;
+	}
 }

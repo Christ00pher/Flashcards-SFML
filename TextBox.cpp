@@ -6,19 +6,21 @@ TextBox::TextBox(float x, float y)
 :text("", x, y)
 {
 	position = {x, y};
-	size = {300,30};
+	//size = {300,30};
 	texture.loadFromFile("data/General/flashcard.png");
-	//size = texture.getSize();
+	size = texture.getSize();
 	sprite.setTexture(texture);
 	sprite.setOrigin(size.x / 2, size.y / 2);
+	sprite.setScale(0.5,0.5);
+	sprite.setOrigin(size.x / 2,size.y / 2);
+	sprite.setPosition(position);
 	
-	
-	textbox.setFillColor(sf::Color::White);
-	textbox.setOutlineColor(sf::Color::Black);
-	textbox.setOutlineThickness(2);
-	textbox.setSize(size);
-	textbox.setOrigin(size.x/2, size.y/2);
-	textbox.setPosition(position);
+	//textbox.setFillColor(sf::Color::White);
+	//textbox.setOutlineColor(sf::Color::Black);
+	//textbox.setOutlineThickness(2);
+	//textbox.setSize(size);
+	//textbox.setOrigin(size.x/2, size.y/2);
+	//textbox.setPosition(position);
 	
 	marked = false;
 }
@@ -27,7 +29,8 @@ TextBox::~TextBox() {}
 
 void TextBox::draw()
 {
-	Window::instance().draw(textbox);
+	//Window::instance().draw(textbox);
+	Window::instance().draw(sprite);
 	Window::instance().draw(text.getText());
 }
 
@@ -36,20 +39,20 @@ sf::Vector2f TextBox::getPosition()
 	return position;
 }
 
-sf::Vector2f TextBox::getSize()
+sf::Vector2u TextBox::getSize()
 {
 	return size;
 }
 
 void TextBox::mark()
 {
-	textbox.setFillColor(sf::Color::Yellow);
+	//textbox.setFillColor(sf::Color::Yellow);
 	marked = true;
 }
 
 void TextBox::remark()
 {
-	textbox.setFillColor(sf::Color::White);
+	//textbox.setFillColor(sf::Color::White);
 	marked = false;
 }
 

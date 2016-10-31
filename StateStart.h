@@ -20,5 +20,6 @@ public:
 	virtual void render();
 	virtual void pollEvent();
 	void getInput();
+	void handleAnswer();
 	bool isCorrect();
 };
