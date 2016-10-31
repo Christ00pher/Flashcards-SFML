@@ -69,7 +69,8 @@ Debug/Button.cpp.o: Button.cpp Button.h \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Glsl.hpp \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Glsl.inl \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Sprite.hpp \
- /home/chris/dev/sfml/SFML/include/SFML/Graphics/Text.hpp Window.h
+ /home/chris/dev/sfml/SFML/include/SFML/Graphics/Text.hpp Window.h \
+ Caption.h
 
 Button.h:
 
@@ -216,3 +217,5 @@ Button.h:
 /home/chris/dev/sfml/SFML/include/SFML/Graphics/Text.hpp:
 
 Window.h:
+
+Caption.h:

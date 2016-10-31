@@ -22,7 +22,9 @@ public:
 	sf::Text& getText();
 	sf::String& getString();
 	void add(sf::Event);
+	void draw();
 	void setPosition(float,float);
+	void setPosition(sf::Vector2f);
 	void setSize(int);
 	void setColor(sf::Color);
 	void setFont(std::string);

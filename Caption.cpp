@@ -1,4 +1,5 @@
 #include "Caption.h"
+#include <iostream>
 
 Caption::Caption()
 :size(30),
@@ -104,4 +105,19 @@ void Caption::setOrigin()
 	sf::FloatRect textRect = text.getLocalBounds();
 	text.setOrigin(textRect.left + textRect.width/2.0f,
 					textRect.top  + textRect.height/2.0f);
+}
+
+void Caption::draw()
+{
+	Window::instance().draw(text);
+}
+
+void Caption::setPosition(sf::Vector2f pos)
+{
+	position = pos;
+	text.setPosition(position);
+	
+	std::cout << (std::string)string << std::endl;
+	std::cout << "Pos.x = " << text.getPosition().x << std::endl;
+	std::cout << "Pos.y = " << text.getPosition().y << std::endl;
 }

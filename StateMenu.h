@@ -18,7 +18,7 @@ private:
 public:
 	StateMenu();
 	StateMenu(Flashcards &flashcards);
-	~StateMenu() {};
+	~StateMenu() { std::cout << "StateMenu destroyed" << std::endl; };
 	virtual void update();
 	virtual void render();
 	virtual void checkButtons(sf::Event);

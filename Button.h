@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Window.h"
+#include "Caption.h"
 
 class Button
 {
@@ -10,6 +11,7 @@ protected:
 	sf::Sprite sprite;
 	std::string defaultPath;
 	std::string markedPath;
+	Caption caption;
 	bool marked;
 	sf::Vector2f position; //origin
 	sf::Vector2f corner; //position of up-left corner
@@ -20,7 +22,7 @@ protected:
 	
 public:
 	Button();
-	Button(std::string, std::string, sf::Vector2f pos = {0,0});
+	Button(std::string, std::string, sf::Vector2f pos = {0,0}, std::string text = "");
 	~Button();
 	void setDefaultPath(std::string);
 	void setMarkedPath(std::string);

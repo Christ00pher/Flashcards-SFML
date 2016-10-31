@@ -70,7 +70,8 @@ Debug/main.cpp.o: main.cpp IState.h Flashcards.h \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Glsl.inl \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Sprite.hpp \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Text.hpp Window.h \
- Button.h Sound.h /home/chris/dev/sfml/SFML/include/SFML/Audio.hpp \
+ Button.h Caption.h Sound.h \
+ /home/chris/dev/sfml/SFML/include/SFML/Audio.hpp \
  /home/chris/dev/sfml/SFML/include/SFML/Audio/InputSoundFile.hpp \
  /home/chris/dev/sfml/SFML/include/SFML/Audio/Export.hpp \
  /home/chris/dev/sfml/SFML/include/SFML/Audio/Listener.hpp \
@@ -87,8 +88,7 @@ Debug/main.cpp.o: main.cpp IState.h Flashcards.h \
  /home/chris/dev/sfml/SFML/include/SFML/Audio/SoundFileFactory.inl \
  /home/chris/dev/sfml/SFML/include/SFML/Audio/SoundFileReader.hpp \
  /home/chris/dev/sfml/SFML/include/SFML/Audio/SoundFileWriter.hpp \
- StateMenu.h StateOptions.h Caption.h StateManage.h TextBox.h \
- StateStart.h
+ StateMenu.h StateOptions.h StateManage.h TextBox.h StateStart.h
 
 IState.h:
 
@@ -240,6 +240,8 @@ Window.h:
 
 Button.h:
 
+Caption.h:
+
 Sound.h:
 
 /home/chris/dev/sfml/SFML/include/SFML/Audio.hpp:
@@ -279,8 +281,6 @@ Sound.h:
 StateMenu.h:
 
 StateOptions.h:
-
-Caption.h:
 
 StateManage.h:
 

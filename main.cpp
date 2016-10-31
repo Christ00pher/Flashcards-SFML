@@ -9,16 +9,28 @@
 void changeState(IState *(&state))
 {
 	if ( state->getStateMenu() ) 
-			state = new StateMenu();
+	{
+		//delete state;
+		state = new StateMenu();
+	}
 	
 	else if ( state->getStateOptions() )
+	{
+		//delete state;
 		state = new StateOptions();
+	}
 		
 	else if ( state->getStateManage() )
+	{
+		//delete state;
 		state = new StateManage();
+	}
 	
 	else if ( state->getStateStart() )
+	{
+		//delete state;
 		state = new StateStart();
+	}
 }
 
 int main()

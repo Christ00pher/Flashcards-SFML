@@ -8,7 +8,12 @@ StateManage::StateManage()
 {
 	c1.setSize(30);
 	c2.setSize(30);
+	
+	c1.setColor(sf::Color::White);
+	c2.setColor(sf::Color::White);
+	
 	click = false;
+	
 	tbEnglish.mark();
 }
 

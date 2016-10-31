@@ -70,7 +70,8 @@ Debug/StateMenu.cpp.o: StateMenu.cpp StateMenu.h IState.h Flashcards.h \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Glsl.inl \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Sprite.hpp \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Text.hpp Window.h \
- Button.h Sound.h /home/chris/dev/sfml/SFML/include/SFML/Audio.hpp \
+ Button.h Caption.h Sound.h \
+ /home/chris/dev/sfml/SFML/include/SFML/Audio.hpp \
  /home/chris/dev/sfml/SFML/include/SFML/Audio/InputSoundFile.hpp \
  /home/chris/dev/sfml/SFML/include/SFML/Audio/Export.hpp \
  /home/chris/dev/sfml/SFML/include/SFML/Audio/Listener.hpp \
@@ -239,6 +240,8 @@ Flashcards.h:
 Window.h:
 
 Button.h:
+
+Caption.h:
 
 Sound.h:
 

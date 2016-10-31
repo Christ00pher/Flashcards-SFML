@@ -5,6 +5,7 @@ StateOptions::StateOptions()
 {
 	//credits.setSize(100);
 	credits.setPosition( Window::instance().getX()/2, Window::instance().getY()/2);
+	credits.setColor(sf::Color::White);
 }
 
 void StateOptions::update()

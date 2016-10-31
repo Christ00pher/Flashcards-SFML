@@ -9,6 +9,9 @@ StateStart::StateStart()
 {
 	tbEnglish.mark();
 	newQuestion = true;
+	
+	cPolish.setColor(sf::Color::White);
+	cEnglish.setColor(sf::Color::White);
 }
 
 StateStart::~StateStart() {}

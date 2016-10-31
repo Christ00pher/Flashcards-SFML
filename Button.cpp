@@ -3,10 +3,11 @@
 Button::Button() {}
 
 
-Button::Button(std::string def, std::string mark, sf::Vector2f pos)
+Button::Button(std::string def, std::string mark, sf::Vector2f pos, std::string text)
 :position(pos),
  defaultPath(def),
- markedPath(mark)
+ markedPath(mark),
+ caption(text)
 {
 	defaultTexture.loadFromFile(defaultPath);
 	markedTexture.loadFromFile(markedPath);
@@ -16,6 +17,8 @@ Button::Button(std::string def, std::string mark, sf::Vector2f pos)
 	
 	sprite.setOrigin(size.x / 2, size.y / 2);
 	sprite.setPosition(position);
+	
+	caption.setPosition( sprite.getPosition() );
 	
 	marked = false;
 	leftClick = false;
@@ -78,6 +81,7 @@ void Button::setMarkedPath(std::string marked)
 void Button::draw()
 {
 	Window::instance().draw(sprite);
+	caption.draw();
 }
 
 bool Button::isMouseReleased(sf::Event event)

@@ -1,10 +1,10 @@
 #include "StateMenu.h"
 StateMenu::StateMenu()
 :TOTAL_BUTTONS(4),
- start("data/General/button.png", "data/General/button.png",{400,100}),
- manage("data/General/button.png", "data/General/button.png",{400,2*100}),
- options("data/General/button.png", "data/General/button.png",{400,3*100}),
- exit("data/General/button.png", "data/General/button.png",{400,4*100}),
+ start("data/General/button.png", "data/General/button.png",{250,100}, "Start"),
+ manage("data/General/button.png", "data/General/button.png",{250,2*100}, "Manage"),
+ options("data/General/button.png", "data/General/button.png",{250,3*100}, "Options"),
+ exit("data/General/button.png", "data/General/button.png",{250,4*100}, "Exit"),
  speaker("data/General/speakerOn.png", "data/General/speakerOff.png",{730,70})
 {
 	//wider buttons
@@ -24,11 +24,11 @@ void StateMenu::render()
 	Window::instance().startRender();
 	Window::instance().draw(background);
 	
-	Window::instance().draw(start.getSprite());
-	Window::instance().draw(manage.getSprite());
-	Window::instance().draw(options.getSprite());
-	Window::instance().draw(exit.getSprite());
-	Window::instance().draw(speaker.getSprite());
+	start.draw();
+	manage.draw();
+	options.draw();
+	exit.draw();
+	speaker.draw();
 	
 	Window::instance().finishRender();
 }
