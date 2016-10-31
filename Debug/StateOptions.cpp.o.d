@@ -70,7 +70,24 @@ Debug/StateOptions.cpp.o: StateOptions.cpp StateOptions.h IState.h \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Glsl.inl \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Sprite.hpp \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Text.hpp Window.h \
- Button.h Caption.h
+ Button.h Sound.h /home/chris/dev/sfml/SFML/include/SFML/Audio.hpp \
+ /home/chris/dev/sfml/SFML/include/SFML/Audio/InputSoundFile.hpp \
+ /home/chris/dev/sfml/SFML/include/SFML/Audio/Export.hpp \
+ /home/chris/dev/sfml/SFML/include/SFML/Audio/Listener.hpp \
+ /home/chris/dev/sfml/SFML/include/SFML/Audio/Music.hpp \
+ /home/chris/dev/sfml/SFML/include/SFML/Audio/SoundStream.hpp \
+ /home/chris/dev/sfml/SFML/include/SFML/Audio/SoundSource.hpp \
+ /home/chris/dev/sfml/SFML/include/SFML/Audio/AlResource.hpp \
+ /home/chris/dev/sfml/SFML/include/SFML/Audio/OutputSoundFile.hpp \
+ /home/chris/dev/sfml/SFML/include/SFML/Audio/Sound.hpp \
+ /home/chris/dev/sfml/SFML/include/SFML/Audio/SoundBuffer.hpp \
+ /home/chris/dev/sfml/SFML/include/SFML/Audio/SoundBufferRecorder.hpp \
+ /home/chris/dev/sfml/SFML/include/SFML/Audio/SoundRecorder.hpp \
+ /home/chris/dev/sfml/SFML/include/SFML/Audio/SoundFileFactory.hpp \
+ /home/chris/dev/sfml/SFML/include/SFML/Audio/SoundFileFactory.inl \
+ /home/chris/dev/sfml/SFML/include/SFML/Audio/SoundFileReader.hpp \
+ /home/chris/dev/sfml/SFML/include/SFML/Audio/SoundFileWriter.hpp \
+ Caption.h
 
 StateOptions.h:
 
@@ -223,5 +240,41 @@ Flashcards.h:
 Window.h:
 
 Button.h:
+
+Sound.h:
+
+/home/chris/dev/sfml/SFML/include/SFML/Audio.hpp:
+
+/home/chris/dev/sfml/SFML/include/SFML/Audio/InputSoundFile.hpp:
+
+/home/chris/dev/sfml/SFML/include/SFML/Audio/Export.hpp:
+
+/home/chris/dev/sfml/SFML/include/SFML/Audio/Listener.hpp:
+
+/home/chris/dev/sfml/SFML/include/SFML/Audio/Music.hpp:
+
+/home/chris/dev/sfml/SFML/include/SFML/Audio/SoundStream.hpp:
+
+/home/chris/dev/sfml/SFML/include/SFML/Audio/SoundSource.hpp:
+
+/home/chris/dev/sfml/SFML/include/SFML/Audio/AlResource.hpp:
+
+/home/chris/dev/sfml/SFML/include/SFML/Audio/OutputSoundFile.hpp:
+
+/home/chris/dev/sfml/SFML/include/SFML/Audio/Sound.hpp:
+
+/home/chris/dev/sfml/SFML/include/SFML/Audio/SoundBuffer.hpp:
+
+/home/chris/dev/sfml/SFML/include/SFML/Audio/SoundBufferRecorder.hpp:
+
+/home/chris/dev/sfml/SFML/include/SFML/Audio/SoundRecorder.hpp:
+
+/home/chris/dev/sfml/SFML/include/SFML/Audio/SoundFileFactory.hpp:
+
+/home/chris/dev/sfml/SFML/include/SFML/Audio/SoundFileFactory.inl:
+
+/home/chris/dev/sfml/SFML/include/SFML/Audio/SoundFileReader.hpp:
+
+/home/chris/dev/sfml/SFML/include/SFML/Audio/SoundFileWriter.hpp:
 
 Caption.h:

@@ -42,6 +42,12 @@ void StateManage::pollEvent()
 		mark(event);
 		
 		handleInput(event);
+		
+		if (event.type == sf::Event::Closed)
+		{
+			Window::instance().closeWindow();
+			end = true;
+		}
 	}
 }
 

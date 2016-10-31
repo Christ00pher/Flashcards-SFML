@@ -1,12 +1,13 @@
 #include "StateMenu.h"
 StateMenu::StateMenu()
 :TOTAL_BUTTONS(4),
- start("data/StateStart/startDefault.png", "data/StateStart/startMarked.png",{400,80}),
- manage("data/StateStart/handleDefault.png", "data/StateStart/handleMarked.png",{400,2*80}),
- options("data/StateStart/optionsDefault.png", "data/StateStart/optionsMarked.png",{400,3*80}),
- exit("data/StateStart/exitDefault.png", "data/StateStart/exitMarked.png",{400,4*80}),
+ start("data/General/button.png", "data/General/button.png",{400,100}),
+ manage("data/General/button.png", "data/General/button.png",{400,2*100}),
+ options("data/General/button.png", "data/General/button.png",{400,3*100}),
+ exit("data/General/button.png", "data/General/button.png",{400,4*100}),
  speaker("data/General/speakerOn.png", "data/General/speakerOff.png",{730,70})
 {
+	//wider buttons
 	end = false;
 	
 	if (!Sound::instance().isPlaying())

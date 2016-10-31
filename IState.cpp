@@ -7,7 +7,7 @@ IState::IState()
 	stateManage = false;
 	stateOptions = false;
 	stateStart = false;
-	t_background.loadFromFile("data/General/bg1.jpg");
+	t_background.loadFromFile("data/General/bg2.png");
 	background.setTexture(t_background);
 }
 

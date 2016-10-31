@@ -6,7 +6,12 @@ TextBox::TextBox(float x, float y)
 :text("", x, y)
 {
 	position = {x, y};
-	size = {300, 30};
+	size = {300,30};
+	texture.loadFromFile("data/General/flashcard.png");
+	//size = texture.getSize();
+	sprite.setTexture(texture);
+	sprite.setOrigin(size.x / 2, size.y / 2);
+	
 	
 	textbox.setFillColor(sf::Color::White);
 	textbox.setOutlineColor(sf::Color::Black);

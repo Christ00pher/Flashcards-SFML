@@ -15,6 +15,8 @@ class TextBox
 {
 private:
 	sf::RectangleShape textbox;
+	sf::Texture texture;
+	sf::Sprite sprite;
 	sf::Vector2f position;
 	sf::Vector2f size;
 	bool marked;

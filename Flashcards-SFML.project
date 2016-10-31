@@ -31,6 +31,8 @@
     <File Name="Button.cpp"/>
     <File Name="Sound.cpp"/>
     <File Name="Sound.h"/>
+    <File Name="VolumeBar.h"/>
+    <File Name="VolumeBar.cpp"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>

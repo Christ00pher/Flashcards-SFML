@@ -42,6 +42,12 @@ void StateStart::pollEvent()
 			}
 		}
 		
+		if (event.type == sf::Event::Closed)
+		{
+			Window::instance().closeWindow();
+			end = true;
+		}
+		
 		tbEnglish.getInput(event);
 	}
 }

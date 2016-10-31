@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Chris
-Date                   :=30/10/16
+Date                   :=31/10/16
 CodeLitePath           :=/home/chris/.codelite
 LinkerName             :=/usr/bin/g++
 SharedObjectLinkerName :=/usr/bin/g++ -shared -fPIC
@@ -61,7 +61,7 @@ AS       := /usr/bin/as
 ##
 CodeLiteDir:=/usr/share/codelite
 Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/Window.cpp$(ObjectSuffix) $(IntermediateDirectory)/Flashcards.cpp$(ObjectSuffix) $(IntermediateDirectory)/IState.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateMenu.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateOptions.cpp$(ObjectSuffix) $(IntermediateDirectory)/TextBox.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateManage.cpp$(ObjectSuffix) $(IntermediateDirectory)/Caption.cpp$(ObjectSuffix) $(IntermediateDirectory)/StateStart.cpp$(ObjectSuffix) \
-	$(IntermediateDirectory)/Button.cpp$(ObjectSuffix) $(IntermediateDirectory)/Sound.cpp$(ObjectSuffix) 
+	$(IntermediateDirectory)/Button.cpp$(ObjectSuffix) $(IntermediateDirectory)/Sound.cpp$(ObjectSuffix) $(IntermediateDirectory)/VolumeBar.cpp$(ObjectSuffix) 
 
 
 
@@ -187,6 +187,14 @@ $(IntermediateDirectory)/Sound.cpp$(DependSuffix): Sound.cpp
 
 $(IntermediateDirectory)/Sound.cpp$(PreprocessSuffix): Sound.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Sound.cpp$(PreprocessSuffix)Sound.cpp
+
+$(IntermediateDirectory)/VolumeBar.cpp$(ObjectSuffix): VolumeBar.cpp $(IntermediateDirectory)/VolumeBar.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/chris/CodeLiteProjects/Flashcards-SFML/VolumeBar.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/VolumeBar.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/VolumeBar.cpp$(DependSuffix): VolumeBar.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/VolumeBar.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/VolumeBar.cpp$(DependSuffix) -MM VolumeBar.cpp
+
+$(IntermediateDirectory)/VolumeBar.cpp$(PreprocessSuffix): VolumeBar.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/VolumeBar.cpp$(PreprocessSuffix)VolumeBar.cpp
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)
