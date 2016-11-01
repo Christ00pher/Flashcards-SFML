@@ -105,6 +105,8 @@ void Caption::setOrigin()
 	sf::FloatRect textRect = text.getLocalBounds();
 	text.setOrigin(textRect.left + textRect.width/2.0f,
 					textRect.top  + textRect.height/2.0f);
+					
+	textSize = { textRect.width, textRect.height };
 }
 
 void Caption::draw()
@@ -116,4 +118,14 @@ void Caption::setPosition(sf::Vector2f pos)
 {
 	position = pos;
 	text.setPosition(position);
+}
+
+void Caption::add(char sign)
+{
+	string += sign;
+}
+
+sf::Vector2f Caption::getTextSize()
+{
+	return textSize;
 }
