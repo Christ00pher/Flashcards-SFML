@@ -25,6 +25,8 @@ public:
 	Button(std::string, std::string, sf::Vector2f pos = {0,0}, std::string text = "");
 	~Button();
 	void setDefaultPath(std::string);
+	void setPosition(sf::Vector2f);
+	void setPosition(float,float);
 	void setMarkedPath(std::string);
 	bool isMarked();
 	bool isMouseReleased(sf::Event);
@@ -34,5 +36,6 @@ public:
 	void draw();
 	void mark();
 	void remark();
+	sf::Vector2u getSize();
 	sf::Sprite& getSprite();
 };

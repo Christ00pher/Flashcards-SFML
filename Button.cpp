@@ -20,6 +20,7 @@ Button::Button(std::string def, std::string mark, sf::Vector2f pos, std::string 
 	
 	caption.setPosition( sprite.getPosition() );
 	
+	leftClickPos = {1000,1000};
 	marked = false;
 	leftClick = false;
 	activated = false;
@@ -56,15 +57,16 @@ void Button::checkCollision(sf::Event event)
 	if (mousePos.x >= corner.x && mousePos.x <= corner.x + size.x &&
 		mousePos.y >= corner.y && mousePos.y <= corner.y + size.y)
 		{
-			if (marked)
+			if (!marked)
 			{
-				remark();
+				mark();
 			}
 		}
 	
 	else
 	{
-		mark();
+		if (marked)
+			remark();
 	}
 }
 
@@ -118,4 +120,29 @@ void Button::getInput(sf::Event event)
 		leftClickPos = sf::Mouse::getPosition( *(Window::instance().getWindow()) );
 		leftClick = true;
 	}
+}
+
+void Button::setPosition(sf::Vector2f pos)
+{
+	position = pos;
+	sprite.setPosition(position);
+	caption.setPosition( sprite.getPosition() );
+	
+	corner.x = position.x - size.x / 2;
+	corner.y = position.y - size.y / 2;
+}
+
+sf::Vector2u Button::getSize()
+{
+	return size;
+}
+
+void Button::setPosition(float x, float y)
+{
+	position = {x,y};
+	sprite.setPosition(x,y);
+	caption.setPosition( sprite.getPosition() );
+	
+	corner.x = position.x - size.x / 2;
+	corner.y = position.y - size.y / 2;
 }

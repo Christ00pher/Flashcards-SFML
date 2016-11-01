@@ -13,6 +13,7 @@ private:
 	Caption success;
 	Caption mistake;
 	bool newQuestion;
+	Button back;
 public:
 	StateStart();
 	~StateStart();
